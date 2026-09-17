@@ -9,7 +9,7 @@ export const siteConfig = {
   description: '上海杉达学院在校生，专注于人工智能领域的不断探索与实践。',
   descriptionEn:
     'A student at Sanda University, dedicated to the continuous exploration and practice in the field of artificial intelligence.',
-  avatar: '/images/avatar-placeholder.png',
+  avatar: '/images/avatar.jpg',
   email: 'your@email.com',
   social: {
     github: 'https://github.com/yourname',

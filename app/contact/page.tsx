@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import GlassCard from '@/components/GlassCard'
 import { siteConfig } from '@/lib/config'
 import { Mail, Download, Send, MapPin } from 'lucide-react'
@@ -37,10 +38,8 @@ export default function ContactPage() {
           {/* Left: Info Card */}
           <GlassCard delay={0.1} className="p-8">
             {/* Avatar */}
-            <div className="w-24 h-24 rounded-full mx-auto mb-6 overflow-hidden" style={{ background: 'linear-gradient(135deg, var(--accent-pink), var(--accent-blue))', opacity: 0.8 }}>
-              <div className="w-full h-full flex items-center justify-center">
-                <span className="text-white/60 text-xs">头像</span>
-              </div>
+            <div className="w-24 h-24 rounded-full mx-auto mb-6 overflow-hidden relative">
+              <Image src={siteConfig.avatar} alt={siteConfig.name} fill className="object-cover" />
             </div>
 
             <h2 className="text-xl font-semibold text-center mb-2">{siteConfig.name}</h2>
