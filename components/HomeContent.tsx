@@ -9,12 +9,18 @@ import WaveDivider from './WaveDivider'
 import LiveStat from './LiveStat'
 import { GithubIcon } from './icons/BrandIcons'
 import { siteConfig } from '@/lib/config'
-import { ArrowRight, Sparkles, MapPin, Sparkle, Star, Eye, ThumbsUp, Bookmark } from 'lucide-react'
+import { ArrowRight, Sparkles, MapPin, Sparkle, Star, Eye, ThumbsUp, Bookmark, Trophy, Rocket, MessagesSquare, Users } from 'lucide-react'
 
 const MARQUEE_WORDS = [
   'AI AGENT', '二次元', 'CREATIVE CODE', '开源', 'HARMONYOS', '智能体',
   'NEXT.JS', '赛博', 'SKILL', '探索', 'FLUTTER', '未来感',
 ]
+
+const HIGHLIGHT_ICONS: Record<string, typeof Sparkles> = {
+  'trae-ai-contest': Trophy,
+  'ai-contests': Rocket,
+  'trae-community': MessagesSquare,
+}
 
 export interface HomeProject {
   slug: string
@@ -190,6 +196,64 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
 
       <WaveDivider flip />
 
+      {/* Contests & Community */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl font-bold text-center mb-12"
+            style={{ fontFamily: 'var(--font-display)' }}
+          >
+            <span
+              className="block text-xs tracking-[0.4em] mb-3 uppercase"
+              style={{ color: 'var(--accent-violet)', fontFamily: 'var(--font-latin)' }}
+            >
+              Contests &amp; Community
+            </span>
+            赛事与社区
+          </motion.h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {siteConfig.highlights.map((item, i) => {
+              const Icon = HIGHLIGHT_ICONS[item.key] ?? Sparkles
+              return (
+                <GlassCard key={item.key} delay={i * 0.1} className="p-6 h-full flex flex-col">
+                  <span
+                    className="inline-flex items-center justify-center w-11 h-11 rounded-2xl mb-4 shrink-0"
+                    style={{
+                      background: 'linear-gradient(135deg, var(--accent-pink), var(--accent-blue))',
+                      color: '#fff',
+                    }}
+                  >
+                    <Icon size={20} />
+                  </span>
+                  <h3 className="font-semibold mb-1">{item.title}</h3>
+                  <p
+                    className="text-[11px] tracking-widest uppercase mb-3"
+                    style={{ color: 'var(--accent-violet)', fontFamily: 'var(--font-latin)' }}
+                  >
+                    {item.titleEn}
+                  </p>
+                  <p className="text-sm mb-1 flex-1" style={{ color: 'var(--text-secondary)' }}>
+                    {item.desc}
+                  </p>
+                  <p className="text-xs mb-4 opacity-80" style={{ color: 'var(--text-secondary)' }}>
+                    {item.descEn}
+                  </p>
+                  <span className="glass-tag text-xs self-start" title={item.metaEn}>
+                    {item.meta}
+                  </span>
+                </GlassCard>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      <WaveDivider />
+
       {/* Featured Projects */}
       {projects.length > 0 && (
         <section className="py-20 px-6">
@@ -297,6 +361,12 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
               >
                 这里展示的每一个作品，完整源码、开发过程与后续更新都托管在我的 GitHub 仓库，欢迎前往查看、star 与交流。
               </p>
+              <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+                <span className="glass-tag inline-flex items-center gap-1.5" title="GitHub Followers">
+                  <Users size={14} className="text-[var(--accent-violet)]" />
+                  {siteConfig.githubFollowers} 位关注者
+                </span>
+              </div>
               <GithubCta />
             </GlassCard>
           </motion.div>

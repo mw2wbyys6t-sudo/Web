@@ -2,15 +2,16 @@ export const siteConfig = {
   name: '0mecihuatl',
   title: '你好，我是 0mecihuatl',
   titleEn: "Hi, I'm 0mecihuatl",
-  subtitle: 'TRAE 专业用户 · 前沿人工智能领域探索者 · AI 深度使用者',
-  subtitleEn: 'TRAE Power User · Frontier AI Explorer · Deep AI Practitioner',
+  subtitle: '全栈开发者 · TRAE 专业用户 · AI 深度探索者',
+  subtitleEn: 'Full-Stack Developer · TRAE Power User · Deep AI Explorer',
   location: '来自江苏南通',
   locationEn: 'From Nantong, Jiangsu',
-  description: '上海杉达学院在校生，专注于人工智能领域的不断探索与实践。',
+  description: '上海杉达学院在校生，全栈开发方向，专注于人工智能领域的不断探索与实践，长期活跃于 TRAE 中文社区。',
   descriptionEn:
-    'A student at Sanda University, dedicated to the continuous exploration and practice in the field of artificial intelligence.',
+    'A student at Sanda University and a full-stack developer, dedicated to the continuous exploration and practice of artificial intelligence, and an active member of the TRAE Chinese community.',
   avatar: '/images/avatar.jpg',
   email: 'your@email.com',
+  githubFollowers: 1,
   social: [
     {
       key: 'github',
@@ -58,6 +59,35 @@ export const siteConfig = {
     { category: '前端', items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vue'] },
     { category: '后端', items: ['Node.js', 'Python', 'PostgreSQL', 'Redis'] },
     { category: '工具', items: ['Git', 'Docker', 'Figma', 'VS Code'] },
+  ],
+  highlights: [
+    {
+      key: 'trae-ai-contest',
+      title: 'TRAE AI 创造力大赛',
+      titleEn: 'TRAE AI Creativity Contest',
+      meta: '参赛者',
+      metaEn: 'Participant',
+      desc: 'AI 创造力方向的参赛经历',
+      descEn: 'Contest experience in AI creativity',
+    },
+    {
+      key: 'ai-contests',
+      title: '多项 AI 开发赛事',
+      titleEn: 'Multiple AI Contests',
+      meta: '参赛经历',
+      metaEn: 'Participant',
+      desc: '持续参加各类 AI 与创新应用赛事',
+      descEn: 'Ongoing participation in AI and innovation contests',
+    },
+    {
+      key: 'trae-community',
+      title: 'TRAE 中文社区',
+      titleEn: 'TRAE Chinese Community',
+      meta: '主要活跃阵地',
+      metaEn: 'Most active in',
+      desc: '日常活跃与交流的开发者社区',
+      descEn: 'The community where I stay active and exchange ideas',
+    },
   ],
 }
 
