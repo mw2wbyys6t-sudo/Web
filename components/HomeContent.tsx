@@ -8,7 +8,7 @@ import GithubCta from './GithubCta'
 import WaveDivider from './WaveDivider'
 import { GithubIcon } from './icons/BrandIcons'
 import { siteConfig } from '@/lib/config'
-import { ArrowRight, Sparkles, MapPin, Sparkle } from 'lucide-react'
+import { ArrowRight, Sparkles, MapPin, Sparkle, Star, Eye, ThumbsUp, Bookmark } from 'lucide-react'
 
 const MARQUEE_WORDS = [
   'AI AGENT', '二次元', 'CREATIVE CODE', '开源', 'HARMONYOS', '智能体',
@@ -20,6 +20,8 @@ export interface HomeProject {
   title: string
   description: string
   tags: string[]
+  image?: string
+  stars?: number
 }
 
 export interface HomePost {
@@ -27,6 +29,7 @@ export interface HomePost {
   title: string
   date: string
   excerpt: string
+  stats?: { views: number; likes: number; favorites: number }
 }
 
 interface HomeContentProps {
@@ -211,12 +214,31 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
                 <GlassCard key={project.slug} delay={i * 0.1} className="overflow-hidden h-full flex flex-col">
                   <Link href={`/projects/${project.slug}`} className="flex flex-col h-full">
                     <div
-                      className="h-40 w-full"
+                      className="h-40 w-full relative overflow-hidden"
                       style={{
                         background: `linear-gradient(${135 + i * 30}deg, var(--accent-pink), var(--accent-blue))`,
-                        opacity: 0.25,
                       }}
-                    />
+                    >
+                      {project.image && (
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          className="object-cover"
+                        />
+                      )}
+                      {typeof project.stars === 'number' && (
+                        <span
+                          className="absolute top-3 right-3 inline-flex items-center gap-1 glass-tag text-xs !bg-[var(--glass-bg)] backdrop-blur-md"
+                          style={{ color: 'var(--text-primary)' }}
+                          title="GitHub Stars"
+                        >
+                          <Star size={12} className="text-[var(--accent-pink)]" fill="currentColor" />
+                          {project.stars}
+                        </span>
+                      )}
+                    </div>
                     <div className="p-5 flex flex-col flex-1">
                       <h3 className="font-semibold mb-2">{project.title}</h3>
                       <p className="text-sm mb-3 flex-1" style={{ color: 'var(--text-secondary)' }}>
@@ -308,7 +330,23 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
                   <Link href={`/blog/${post.slug}`} className="flex flex-col h-full">
                     <p className="text-xs mb-2" style={{ color: 'var(--text-secondary)' }}>{post.date}</p>
                     <h3 className="font-semibold mb-2">{post.title}</h3>
-                    <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{post.excerpt}</p>
+                    <p className="text-sm flex-1" style={{ color: 'var(--text-secondary)' }}>{post.excerpt}</p>
+                    {post.stats && (
+                      <div
+                        className="flex items-center gap-4 mt-4 text-xs"
+                        style={{ color: 'var(--text-secondary)' }}
+                      >
+                        <span className="inline-flex items-center gap-1">
+                          <Eye size={13} /> {post.stats.views}
+                        </span>
+                        <span className="inline-flex items-center gap-1">
+                          <ThumbsUp size={13} /> {post.stats.likes}
+                        </span>
+                        <span className="inline-flex items-center gap-1">
+                          <Bookmark size={13} /> {post.stats.favorites}
+                        </span>
+                      </div>
+                    )}
                   </Link>
                 </GlassCard>
               ))}

@@ -4,7 +4,7 @@ import matter from 'gray-matter'
 import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
 import html from 'remark-html'
-import type { BlogPost, Project, ContentLink } from './types'
+import type { BlogPost, Project, ContentLink, ContentStats } from './types'
 
 const contentDirectory = path.join(process.cwd(), 'content')
 
@@ -19,6 +19,13 @@ function parseLinks(value: unknown): ContentLink[] {
       }
     })
     .filter(link => link.url.length > 0)
+}
+
+function parseStats(value: unknown): ContentStats | undefined {
+  if (typeof value !== 'object' || value === null) return undefined
+  const stats = value as { views?: unknown; likes?: unknown; favorites?: unknown }
+  const num = (v: unknown) => (typeof v === 'number' && Number.isFinite(v) ? v : 0)
+  return { views: num(stats.views), likes: num(stats.likes), favorites: num(stats.favorites) }
 }
 
 export function getAllPosts(): BlogPost[] {
@@ -39,6 +46,7 @@ export function getAllPosts(): BlogPost[] {
       excerpt: data.excerpt || '',
       category: data.category || '未分类',
       tags: data.tags || [],
+      stats: parseStats(data.stats),
       links: parseLinks(data.links),
       content,
     }
@@ -76,6 +84,7 @@ export function getAllProjects(): Project[] {
       tags: data.tags || [],
       image: data.image || '/images/project-placeholder.png',
       order: typeof data.order === 'number' ? data.order : 999,
+      stars: typeof data.stars === 'number' ? data.stars : undefined,
       link: data.link || '',
       github: data.github || '',
       links: parseLinks(data.links),

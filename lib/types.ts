@@ -3,6 +3,12 @@ export interface ContentLink {
   url: string
 }
 
+export interface ContentStats {
+  views: number
+  likes: number
+  favorites: number
+}
+
 export interface BlogPost {
   slug: string
   title: string
@@ -10,6 +16,7 @@ export interface BlogPost {
   excerpt: string
   category: string
   tags: string[]
+  stats?: ContentStats
   links: ContentLink[]
   content: string
 }
@@ -22,6 +29,7 @@ export interface Project {
   tags: string[]
   image: string
   order: number
+  stars?: number
   link?: string
   github?: string
   links: ContentLink[]

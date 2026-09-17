@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getAllProjects, getProjectBySlug, markdownToHtml } from '@/lib/content'
-import { ArrowLeft, ExternalLink } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Star } from 'lucide-react'
 import { GithubIcon } from '@/components/icons/BrandIcons'
 import ContentLinks from '@/components/ContentLinks'
 
@@ -61,6 +61,15 @@ export default async function ProjectDetailPage({
             {project.tags.map(tag => (
               <span key={tag} className="glass-tag text-xs">{tag}</span>
             ))}
+            {typeof project.stars === 'number' && (
+              <span
+                className="glass-tag text-xs inline-flex items-center gap-1"
+                title="GitHub Stars"
+              >
+                <Star size={12} className="text-[var(--accent-pink)]" fill="currentColor" />
+                {project.stars} stars
+              </span>
+            )}
           </div>
 
           <div className="flex flex-wrap gap-4">

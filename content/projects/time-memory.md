@@ -4,6 +4,8 @@ description: "一个用来记录生活的微信小程序：把日常与朋友圈
 category: "小程序"
 tags: ["微信小程序", "Vlog", "生活记录"]
 order: 6
+image: "/images/projects/time-memory.jpg"
+stars: 0
 github: "https://github.com/mw2wbyys6t-sudo/time-memory"
 links:
   - label: "源码（GitHub）"

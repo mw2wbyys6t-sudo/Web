@@ -4,6 +4,8 @@ description: "发布在魔搭社区的一个 AI Skill：把地点搜索、路径
 category: "AI 应用"
 tags: ["AI Skill", "高德 LBS", "ModelScope", "智能体"]
 order: 5
+image: "/images/projects/gaode-map-skill.jpg"
+stars: 0
 link: "https://www.modelscope.cn/skills/ometlcic/gaode-skill"
 github: "https://github.com/mw2wbyys6t-sudo/gaode-skill-"
 links:

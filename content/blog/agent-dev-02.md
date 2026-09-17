@@ -4,6 +4,10 @@ date: "2026-04-15"
 category: "AI 智能体"
 excerpt: "承接上篇，继续记录我在 Coze 平台开发智能体工作流时遇到的具体问题与解法，以及 TRAE SOLO 独立端的最新进展。"
 tags: ["Coze", "工作流", "踩坑", "SOLO"]
+stats:
+  views: 468
+  likes: 8
+  favorites: 3
 links:
   - label: "阅读原文（CSDN）"
     url: "https://blog.csdn.net/2501_94355779/article/details/159852544"

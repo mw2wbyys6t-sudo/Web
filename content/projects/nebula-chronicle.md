@@ -4,6 +4,8 @@ description: "沉浸式动漫宇宙探索平台：Three.js 3D 星云 + Liquid Gl
 category: "创意前端"
 tags: ["Three.js", "Vue 3", "Liquid Glass", "语音交互", "手势控制"]
 order: 3
+image: "/images/projects/nebula-chronicle.jpg"
+stars: 0
 link: "https://mw2wbyys6t-sudo.github.io/nebula-chronicle/"
 github: "https://github.com/mw2wbyys6t-sudo/nebula-chronicle"
 links:

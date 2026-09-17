@@ -4,6 +4,8 @@ description: "你正在浏览的这个网站：Next.js 16 + Tailwind CSS 4 打�
 category: "创意前端"
 tags: ["Next.js", "React", "Tailwind CSS", "液态玻璃", "昼夜切换"]
 order: 8
+image: "/images/projects/personal-website.jpg"
+stars: 0
 github: "https://github.com/mw2wbyys6t-sudo/Web"
 links:
   - label: "源码（GitHub）"

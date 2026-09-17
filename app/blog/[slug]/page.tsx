@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getAllPosts, getPostBySlug, markdownToHtml } from '@/lib/content'
-import { ArrowLeft, Calendar, FolderOpen } from 'lucide-react'
+import { ArrowLeft, Calendar, FolderOpen, Eye, ThumbsUp, Bookmark } from 'lucide-react'
 import ContentLinks from '@/components/ContentLinks'
 
 export function generateStaticParams() {
@@ -55,6 +55,19 @@ export default async function BlogPostPage({
               <span className="inline-flex items-center gap-1.5">
                 <Calendar size={14} />
                 {post.date}
+              </span>
+            )}
+            {post.stats && (
+              <span className="inline-flex items-center gap-3">
+                <span className="inline-flex items-center gap-1" title="阅读量">
+                  <Eye size={13} /> {post.stats.views}
+                </span>
+                <span className="inline-flex items-center gap-1" title="点赞">
+                  <ThumbsUp size={13} /> {post.stats.likes}
+                </span>
+                <span className="inline-flex items-center gap-1" title="收藏">
+                  <Bookmark size={13} /> {post.stats.favorites}
+                </span>
               </span>
             )}
           </div>

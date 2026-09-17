@@ -15,6 +15,7 @@ export default function BlogPage() {
     excerpt: post.excerpt,
     category: post.category,
     tags: post.tags,
+    stats: post.stats,
   }))
 
   return (

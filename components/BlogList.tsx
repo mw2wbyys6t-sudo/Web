@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import GlassCard from './GlassCard'
-import { Calendar, Tag, FolderOpen } from 'lucide-react'
+import { Calendar, Tag, FolderOpen, Eye, ThumbsUp, Bookmark } from 'lucide-react'
 
 export interface BlogListItem {
   slug: string
@@ -13,6 +13,7 @@ export interface BlogListItem {
   excerpt: string
   category: string
   tags: string[]
+  stats?: { views: number; likes: number; favorites: number }
 }
 
 export default function BlogList({ posts }: { posts: BlogListItem[] }) {
@@ -74,6 +75,19 @@ export default function BlogList({ posts }: { posts: BlogListItem[] }) {
                     <span className="inline-flex items-center gap-1.5">
                       <Calendar size={14} />
                       {post.date}
+                    </span>
+                  )}
+                  {post.stats && (
+                    <span className="inline-flex items-center gap-3 ml-auto">
+                      <span className="inline-flex items-center gap-1">
+                        <Eye size={13} /> {post.stats.views}
+                      </span>
+                      <span className="inline-flex items-center gap-1">
+                        <ThumbsUp size={13} /> {post.stats.likes}
+                      </span>
+                      <span className="inline-flex items-center gap-1">
+                        <Bookmark size={13} /> {post.stats.favorites}
+                      </span>
                     </span>
                   )}
                 </div>

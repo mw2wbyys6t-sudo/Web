@@ -14,6 +14,8 @@ export default function ProjectsPage() {
     description: project.description,
     category: project.category,
     tags: project.tags,
+    image: project.image,
+    stars: project.stars,
     link: project.link,
     github: project.github,
   }))

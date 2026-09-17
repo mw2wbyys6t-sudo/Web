@@ -4,6 +4,8 @@ description: "一句话生成你的专属虚拟主播：从 AI 生成角色立�
 category: "AI 应用"
 tags: ["Live2D", "AI 虚拟主播", "Python", "Go", "Next.js"]
 order: 1
+image: "/images/projects/live2d-master-agent.jpg"
+stars: 8
 link: "https://mw2wbyys6t-sudo.github.io/live2d-auto-pipeline/"
 github: "https://github.com/mw2wbyys6t-sudo/live2d-auto-pipeline"
 links:

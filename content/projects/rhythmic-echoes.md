@@ -4,6 +4,8 @@ description: "一款融合音乐节奏与 roguelike 元素的僵尸射击游戏�
 category: "游戏开发"
 tags: ["React", "TypeScript", "Canvas 2D", "roguelike", "音乐游戏"]
 order: 4
+image: "/images/projects/rhythmic-echoes.jpg"
+stars: 0
 github: "https://github.com/mw2wbyys6t-sudo/-Rhythmic-Echoes-The-Songweaver"
 links:
   - label: "源码（GitHub）"

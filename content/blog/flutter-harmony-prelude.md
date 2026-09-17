@@ -4,6 +4,10 @@ date: "2026-04-04"
 category: "鸿蒙跨平台"
 excerpt: "想在鸿蒙设备上用 Flutter 跑起一个 App，第一步是把环境搭对。这篇记录 Flutter-OH 环境搭建的四个前置步骤和一个高频报错的解法。"
 tags: ["Flutter", "HarmonyOS", "环境搭建"]
+stats:
+  views: 476
+  likes: 11
+  favorites: 10
 links:
   - label: "阅读原文（CSDN）"
     url: "https://blog.csdn.net/2501_94355779/article/details/159835564"

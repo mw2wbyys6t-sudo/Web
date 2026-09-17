@@ -4,6 +4,10 @@ date: "2026-04-21"
 category: "AI 编程"
 excerpt: "从一个游戏原型到部署上线，我只花了 2 小时。这篇记录我如何用 TRAE SOLO 把「边听歌边打僵尸」的想法，变成真的能玩的游戏。"
 tags: ["TRAE SOLO", "AI 编程", "游戏开发", "部署"]
+stats:
+  views: 666
+  likes: 11
+  favorites: 3
 links:
   - label: "阅读原文（CSDN）"
     url: "https://blog.csdn.net/2501_94355779/article/details/160348455"

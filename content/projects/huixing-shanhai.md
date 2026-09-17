@@ -4,6 +4,8 @@ description: "基于 AI 与电子地图的一站式旅游规划导览平台：35
 category: "AI 应用"
 tags: ["AI 旅游规划", "LangGraph", "FastAPI", "Next.js", "高德地图"]
 order: 2
+image: "/images/projects/huixing-shanhai.jpg"
+stars: 0
 link: "https://mw2wbyys6t-sudo.github.io/huixing-shanhai/"
 github: "https://github.com/mw2wbyys6t-sudo/huixing-shanhai"
 links:

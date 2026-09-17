@@ -12,6 +12,8 @@ export default function HomePage() {
       title: project.title,
       description: project.description,
       tags: project.tags,
+      image: project.image,
+      stars: project.stars,
     }))
 
   const posts = getAllPosts()
@@ -21,6 +23,7 @@ export default function HomePage() {
       title: post.title,
       date: post.date,
       excerpt: post.excerpt,
+      stats: post.stats,
     }))
 
   const avatarPath = path.join(process.cwd(), 'public', siteConfig.avatar)

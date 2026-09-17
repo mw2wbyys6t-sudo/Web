@@ -2,9 +2,10 @@
 
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import GlassCard from './GlassCard'
-import { ExternalLink, FolderOpen } from 'lucide-react'
+import { ExternalLink, FolderOpen, Star } from 'lucide-react'
 import { GithubIcon } from './icons/BrandIcons'
 
 export interface ProjectListItem {
@@ -13,6 +14,8 @@ export interface ProjectListItem {
   description: string
   category: string
   tags: string[]
+  image?: string
+  stars?: number
   link?: string
   github?: string
 }
@@ -71,12 +74,39 @@ export default function ProjectList({ projects }: { projects: ProjectListItem[] 
                   className="h-48 w-full relative overflow-hidden"
                   style={{
                     background: `linear-gradient(${135 + i * 45}deg, var(--accent-pink), var(--accent-blue))`,
-                    opacity: 0.85,
                   }}
                 >
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-white/75 text-sm font-medium">{project.category}</span>
-                  </div>
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-white/75 text-sm font-medium">{project.category}</span>
+                    </div>
+                  )}
+
+                  <span
+                    className="absolute top-3 left-3 glass-tag text-xs !bg-[var(--glass-bg)] backdrop-blur-md"
+                    style={{ color: 'var(--text-primary)' }}
+                  >
+                    {project.category}
+                  </span>
+
+                  {typeof project.stars === 'number' && (
+                    <span
+                      className="absolute top-3 right-3 inline-flex items-center gap-1 glass-tag text-xs !bg-[var(--glass-bg)] backdrop-blur-md"
+                      style={{ color: 'var(--text-primary)' }}
+                      title="GitHub Stars"
+                    >
+                      <Star size={12} className="text-[var(--accent-pink)]" fill="currentColor" />
+                      {project.stars}
+                    </span>
+                  )}
                 </div>
 
                 <div className="p-6 flex flex-col flex-1">
