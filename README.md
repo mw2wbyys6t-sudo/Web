@@ -77,9 +77,8 @@ content/                    所有内容（改内容只动这里）
 ├─ blog/*.md                博客文章
 └─ projects/*.md            作品条目
 lib/
-├─ config.ts                站点信息、社交账号、导航、技能
+├─ config.ts                站点信息、社交账号、导航、技能、赛事与社区
 ├─ content.ts               Markdown 读取与解析
-├─ stats.ts                 星标 / 阅读数据抓取与解析
 └─ types.ts                 数据类型定义
 public/images/              头像与作品封面
 scripts/sync-stats.mjs      数据同步脚本
