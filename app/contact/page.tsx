@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import GlassCard from '@/components/GlassCard'
 import { siteConfig } from '@/lib/config'
-import { Mail, Download, Send, MapPin } from 'lucide-react'
-import { GithubIcon, TwitterIcon, LinkedinIcon } from '@/components/icons/BrandIcons'
+import { Download, Send, MapPin } from 'lucide-react'
+import SocialLinks from '@/components/SocialLinks'
 import { useState } from 'react'
 
 export default function ContactPage() {
@@ -55,20 +55,7 @@ export default function ContactPage() {
             </div>
 
             {/* Social Links */}
-            <div className="flex justify-center gap-4 mb-6">
-              <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full glass-btn !p-3">
-                <GithubIcon width={20} height={20} />
-              </a>
-              <a href={siteConfig.social.twitter} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full glass-btn !p-3">
-                <TwitterIcon width={20} height={20} />
-              </a>
-              <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full glass-btn !p-3">
-                <LinkedinIcon width={20} height={20} />
-              </a>
-              <a href={`mailto:${siteConfig.email}`} className="p-3 rounded-full glass-btn !p-3">
-                <Mail size={20} />
-              </a>
-            </div>
+            <SocialLinks variant="glass" size={20} className="justify-center mb-6" />
 
             {/* Email */}
             <p className="text-sm text-center mb-6" style={{ color: 'var(--text-secondary)' }}>

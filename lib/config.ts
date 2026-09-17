@@ -11,11 +11,36 @@ export const siteConfig = {
     'A student at Sanda University, dedicated to the continuous exploration and practice in the field of artificial intelligence.',
   avatar: '/images/avatar.jpg',
   email: 'your@email.com',
-  social: {
-    github: 'https://github.com/yourname',
-    twitter: 'https://twitter.com/yourname',
-    linkedin: 'https://linkedin.com/in/yourname',
-  },
+  social: [
+    {
+      key: 'modelscope',
+      name: '魔搭社区',
+      nameEn: 'ModelScope',
+      handle: '@ometlcic',
+      url: 'https://www.modelscope.cn/profile/ometlcic',
+    },
+    {
+      key: 'csdn',
+      name: 'CSDN',
+      nameEn: 'CSDN',
+      handle: '0mecihuatl',
+      url: 'https://blog.csdn.net/2501_94355779',
+    },
+    {
+      key: 'zhihu',
+      name: '知乎',
+      nameEn: 'Zhihu',
+      handle: '0mecihuatl',
+      url: 'https://www.zhihu.com/people/6f6cabf3378cc328bb0f72844b96ff7f',
+    },
+    {
+      key: 'xiaohongshu',
+      name: '小红书',
+      nameEn: 'Xiaohongshu',
+      handle: '瑶瑶 · 小红书号 4271200179',
+      url: 'https://xhslink.cn/o/4c92eomkuuz',
+    },
+  ],
   nav: [
     { label: '首页', href: '/' },
     { label: '作品', href: '/projects' },

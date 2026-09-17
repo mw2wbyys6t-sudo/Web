@@ -1,13 +1,6 @@
 import { siteConfig } from '@/lib/config'
-import { Mail, Heart } from 'lucide-react'
-import { GithubIcon, TwitterIcon, LinkedinIcon } from './icons/BrandIcons'
-
-const socialIcons = [
-  { icon: GithubIcon, href: siteConfig.social.github, label: 'GitHub' },
-  { icon: TwitterIcon, href: siteConfig.social.twitter, label: 'Twitter' },
-  { icon: LinkedinIcon, href: siteConfig.social.linkedin, label: 'LinkedIn' },
-  { icon: Mail, href: `mailto:${siteConfig.email}`, label: 'Email' },
-]
+import { Heart } from 'lucide-react'
+import SocialLinks from './SocialLinks'
 
 export default function Footer() {
   return (
@@ -21,21 +14,7 @@ export default function Footer() {
             © {new Date().getFullYear()} {siteConfig.name}. Made with <Heart size={14} className="inline text-[var(--accent-pink)]" />
           </p>
 
-          <div className="flex items-center gap-4">
-            {socialIcons.map(({ icon: Icon, href, label }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-full transition-colors hover:bg-[var(--tag-bg)]"
-                style={{ color: 'var(--text-secondary)' }}
-                aria-label={label}
-              >
-                <Icon width={18} height={18} />
-              </a>
-            ))}
-          </div>
+          <SocialLinks size={18} />
         </div>
       </div>
     </footer>
