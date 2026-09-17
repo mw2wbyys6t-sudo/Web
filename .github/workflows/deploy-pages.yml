@@ -52,6 +52,10 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          # 仓库尚未启用 Pages 时尝试自动启用；若令牌权限不足，则需在
+          # Settings → Pages → Source 手动选择 "GitHub Actions"
+          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
