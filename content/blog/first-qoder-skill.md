@@ -4,6 +4,11 @@ date: "2026-06-26"
 category: "AI 智能体"
 excerpt: "把高德开放平台的 LBS 能力封装成一个可复用的 Skill，是我第一次完整走通「调用第三方开放平台能力」的实践。"
 tags: ["Qoder", "高德开放平台", "AI Skill", "LBS"]
+links:
+  - label: "阅读原文（CSDN）"
+    url: "https://blog.csdn.net/2501_94355779/article/details/162348214"
+  - label: "相关作品：高德地图综合服务 Skill"
+    url: "/projects/gaode-map-skill"
 ---
 
 ## 起因
@@ -24,12 +29,6 @@ tags: ["Qoder", "高德开放平台", "AI Skill", "LBS"]
 
 通过这次项目实践，我对开放平台的**能力边界**和**调用方式**有了更具体的认识，也体会到「把能力封装成 Skill」这种思路的价值 —— 它让 AI 真正能「动手做事」，而不只是聊天。
 
-## 相关作品
+## 小结
 
-我在魔搭社区发布的地图能力 Skill：
-
-👉 [高德地图综合服务 Skill](https://www.modelscope.cn/skills/ometlcic/gaode-skill)
-
----
-
-> 📖 本文同步自 CSDN：[我的第一个 Qoder Skill：当 QoderWork CN 遇上高德开放平台](https://blog.csdn.net/2501_94355779/article/details/162348214)
+这次实践让我第一次完整走通了「调用第三方开放平台能力 → 封装成可复用 Skill」的链路，也为后面做地图类智能体打下了基础。

@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { getAllProjects, getProjectBySlug, markdownToHtml } from '@/lib/content'
 import { ArrowLeft, ExternalLink } from 'lucide-react'
 import { GithubIcon } from '@/components/icons/BrandIcons'
+import ContentLinks from '@/components/ContentLinks'
 
 export function generateStaticParams() {
   return getAllProjects().map(project => ({ slug: project.slug }))
@@ -89,6 +90,8 @@ export default async function ProjectDetailPage({
         <div className="glass-card p-8 md:p-10">
           <div className="prose-glass" dangerouslySetInnerHTML={{ __html: contentHtml }} />
         </div>
+
+        <ContentLinks links={project.links} />
       </div>
     </article>
   )

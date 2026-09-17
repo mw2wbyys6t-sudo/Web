@@ -4,6 +4,13 @@ date: "2026-04-08"
 category: "鸿蒙跨平台"
 excerpt: "环境搭好之后，终于可以真正动手了。这篇讲我如何基于 Flutter + 鸿蒙，初步完成一个「中学生生活模拟器」App 的开发。"
 tags: ["Flutter", "HarmonyOS", "实战"]
+links:
+  - label: "阅读原文（CSDN）"
+    url: "https://blog.csdn.net/2501_94355779/article/details/159885766"
+  - label: "对应作品：中学生生活模拟器"
+    url: "/projects/campus-life-simulator"
+  - label: "上一篇：Flutter-OH 入门前奏"
+    url: "/blog/flutter-harmony-prelude"
 ---
 
 环境搭好之后，就进入了真正有意思的部分：**动手做一个 App**。
@@ -32,8 +39,3 @@ tags: ["Flutter", "HarmonyOS", "实战"]
 ## 小结
 
 鸿蒙跨平台开发的门槛主要在**环境**。环境一旦跑通，后面的开发体验和普通 Flutter 差别不大。
-
----
-
-> 📖 本文同步自 CSDN：[Flutter + 鸿蒙跨平台开发实战：从零构建中学生生活模拟器（初）](https://blog.csdn.net/2501_94355779/article/details/159885766)
-> 🧩 对应作品：[中学生生活模拟器](/projects/campus-life-simulator)

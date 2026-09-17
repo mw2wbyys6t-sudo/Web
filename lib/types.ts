@@ -1,3 +1,8 @@
+export interface ContentLink {
+  label: string
+  url: string
+}
+
 export interface BlogPost {
   slug: string
   title: string
@@ -5,6 +10,7 @@ export interface BlogPost {
   excerpt: string
   category: string
   tags: string[]
+  links: ContentLink[]
   content: string
 }
 
@@ -18,5 +24,6 @@ export interface Project {
   order: number
   link?: string
   github?: string
+  links: ContentLink[]
   content: string
 }

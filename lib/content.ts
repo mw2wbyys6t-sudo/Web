@@ -4,9 +4,22 @@ import matter from 'gray-matter'
 import { remark } from 'remark'
 import remarkGfm from 'remark-gfm'
 import html from 'remark-html'
-import type { BlogPost, Project } from './types'
+import type { BlogPost, Project, ContentLink } from './types'
 
 const contentDirectory = path.join(process.cwd(), 'content')
+
+function parseLinks(value: unknown): ContentLink[] {
+  if (!Array.isArray(value)) return []
+  return value
+    .map(item => {
+      const link = item as { label?: unknown; url?: unknown }
+      return {
+        label: typeof link?.label === 'string' ? link.label : '',
+        url: typeof link?.url === 'string' ? link.url : '',
+      }
+    })
+    .filter(link => link.url.length > 0)
+}
 
 export function getAllPosts(): BlogPost[] {
   const postsDir = path.join(contentDirectory, 'blog')
@@ -26,6 +39,7 @@ export function getAllPosts(): BlogPost[] {
       excerpt: data.excerpt || '',
       category: data.category || '未分类',
       tags: data.tags || [],
+      links: parseLinks(data.links),
       content,
     }
   })
@@ -64,6 +78,7 @@ export function getAllProjects(): Project[] {
       order: typeof data.order === 'number' ? data.order : 999,
       link: data.link || '',
       github: data.github || '',
+      links: parseLinks(data.links),
       content,
     }
   })

@@ -5,6 +5,11 @@ category: "AI 应用"
 tags: ["AI Skill", "高德 LBS", "ModelScope", "智能体"]
 order: 2
 link: "https://www.modelscope.cn/skills/ometlcic/gaode-skill"
+links:
+  - label: "发布页（魔搭社区）"
+    url: "https://www.modelscope.cn/skills/ometlcic/gaode-skill"
+  - label: "相关文章：我的第一个 Qoder Skill"
+    url: "/blog/first-qoder-skill"
 ---
 
 ## 项目简介
@@ -40,7 +45,3 @@ Skill 内置了 **12 个场景分支**：从最简单的「搜美食」，到完
 ## 在线体验
 
 👉 [www.modelscope.cn/skills/ometlcic/gaode-skill](https://www.modelscope.cn/skills/ometlcic/gaode-skill)
-
----
-
-> 📖 相关开发文章：[我的第一个 Qoder Skill：当 QoderWork CN 遇上高德开放平台](https://blog.csdn.net/2501_94355779/article/details/162348214)

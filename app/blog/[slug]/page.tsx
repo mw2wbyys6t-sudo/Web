@@ -2,7 +2,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getAllPosts, getPostBySlug, markdownToHtml } from '@/lib/content'
-import { ArrowLeft, Calendar } from 'lucide-react'
+import { ArrowLeft, Calendar, FolderOpen } from 'lucide-react'
+import ContentLinks from '@/components/ContentLinks'
 
 export function generateStaticParams() {
   return getAllPosts().map(post => ({ slug: post.slug }))
@@ -45,9 +46,17 @@ export default async function BlogPostPage({
         </Link>
 
         <header className="mb-10">
-          <div className="flex items-center gap-2 mb-4 text-xs" style={{ color: 'var(--text-secondary)' }}>
-            <Calendar size={14} />
-            <span>{post.date}</span>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-4 text-xs" style={{ color: 'var(--text-secondary)' }}>
+            <span className="inline-flex items-center gap-1.5 text-[var(--accent-pink)]">
+              <FolderOpen size={14} />
+              {post.category}
+            </span>
+            {post.date && (
+              <span className="inline-flex items-center gap-1.5">
+                <Calendar size={14} />
+                {post.date}
+              </span>
+            )}
           </div>
           <h1
             className="text-3xl md:text-4xl font-bold mb-5 leading-tight"
@@ -67,6 +76,8 @@ export default async function BlogPostPage({
         <div className="glass-card p-8 md:p-10">
           <div className="prose-glass" dangerouslySetInnerHTML={{ __html: contentHtml }} />
         </div>
+
+        <ContentLinks links={post.links} />
       </div>
     </article>
   )

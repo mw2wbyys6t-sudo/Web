@@ -5,6 +5,11 @@ category: "游戏开发"
 tags: ["TRAE SOLO", "AI 编程", "游戏开发", "音乐射击"]
 order: 1
 link: "https://mw2wbyys6t-sudo.github.io/music-rpg-zombie-game/"
+links:
+  - label: "开发手记（CSDN）"
+    url: "https://blog.csdn.net/2501_94355779/article/details/160348455"
+  - label: "TRAE 社区挑战赛"
+    url: "https://forum.trae.cn/"
 ---
 
 ## 项目简介
@@ -37,8 +42,3 @@ link: "https://mw2wbyys6t-sudo.github.io/music-rpg-zombie-game/"
 目前是初代版本，体验还在持续打磨中。可以直接在线试玩：
 
 👉 [mw2wbyys6t-sudo.github.io/music-rpg-zombie-game](https://mw2wbyys6t-sudo.github.io/music-rpg-zombie-game/)
-
----
-
-> 📖 开发手记首发于 CSDN：[【Code with SOLO】大一新生用 SOLO 2 小时完成音乐游戏开发，从 0 到 1 部署上线](https://blog.csdn.net/2501_94355779/article/details/160348455)
-> 🏆 本项目参加了 TRAE 社区挑战赛（[forum.trae.cn](https://forum.trae.cn/)）

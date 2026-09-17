@@ -4,6 +4,11 @@ date: "2026-04-04"
 category: "鸿蒙跨平台"
 excerpt: "想在鸿蒙设备上用 Flutter 跑起一个 App，第一步是把环境搭对。这篇记录 Flutter-OH 环境搭建的四个前置步骤和一个高频报错的解法。"
 tags: ["Flutter", "HarmonyOS", "环境搭建"]
+links:
+  - label: "阅读原文（CSDN）"
+    url: "https://blog.csdn.net/2501_94355779/article/details/159835564"
+  - label: "下一篇：Flutter + 鸿蒙实战"
+    url: "/blog/flutter-harmony-simulator"
 ---
 
 想用 Flutter 开发鸿蒙应用，第一步就是把 **Flutter-OH（Flutter for OpenHarmony）** 环境搭好。
@@ -35,7 +40,3 @@ Flutter-OH 的环境搭建，本质上是在**标准 Flutter 环境**的基础�
 ## 小结
 
 遇到报错不要慌，重新进入软件、反复验证几次，基本都能跑通。
-
----
-
-> 📖 本文同步自 CSDN：[鸿蒙跨平台开发 flutter - 入门前奏篇](https://blog.csdn.net/2501_94355779/article/details/159835564)

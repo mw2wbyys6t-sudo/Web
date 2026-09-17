@@ -4,6 +4,13 @@ date: "2026-04-21"
 category: "AI 编程"
 excerpt: "从一个游戏原型到部署上线，我只花了 2 小时。这篇记录我如何用 TRAE SOLO 把「边听歌边打僵尸」的想法，变成真的能玩的游戏。"
 tags: ["TRAE SOLO", "AI 编程", "游戏开发", "部署"]
+links:
+  - label: "阅读原文（CSDN）"
+    url: "https://blog.csdn.net/2501_94355779/article/details/160348455"
+  - label: "对应作品：节奏战争 Rhythm Warfare"
+    url: "/projects/rhythm-warfare"
+  - label: "在线试玩游戏"
+    url: "https://mw2wbyys6t-sudo.github.io/music-rpg-zombie-game/"
 ---
 
 ## 摘要
@@ -38,8 +45,3 @@ tags: ["TRAE SOLO", "AI 编程", "游戏开发", "部署"]
 👉 [mw2wbyys6t-sudo.github.io/music-rpg-zombie-game](https://mw2wbyys6t-sudo.github.io/music-rpg-zombie-game/)
 
 这个项目也参加了 **TRAE 社区挑战赛**（社区地址：[forum.trae.cn](https://forum.trae.cn/)）。
-
----
-
-> 📖 本文同步自 CSDN：[【Code with SOLO】大一新生用 SOLO 2 小时完成音乐游戏开发，从 0 到 1 部署上线](https://blog.csdn.net/2501_94355779/article/details/160348455)
-> 🎮 对应作品：[节奏战争 Rhythm Warfare](/projects/rhythm-warfare)
