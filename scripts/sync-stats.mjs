@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// 刷新内容快照：从 GitHub 抓取 stars、从 CSDN 抓取阅读/点赞/收藏，回写 frontmatter。
+// 刷新内容快照：从 GitHub 抓取 stars 与关注者数、从 CSDN 抓取阅读/点赞/收藏，回写到源文件。
 // 用法：npm run sync-stats
 
 import fs from 'node:fs'
@@ -8,6 +8,7 @@ import process from 'node:process'
 
 const ROOT = process.cwd()
 const CONTENT = path.join(ROOT, 'content')
+const CONFIG_FILE = path.join(ROOT, 'lib', 'config.ts')
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
 const TIMEOUT = 12000
@@ -117,6 +118,53 @@ function githubRepo(block) {
   return null
 }
 
+// GitHub 个人页的关注者数量是浏览器端渲染的，静态 HTML 里拿不到数字（已实测确认），
+// 因此必须走 REST API。CI 里会带上 GITHUB_TOKEN：既提高额度，也避免共享 IP 被限流。
+async function fetchGithubUser(login) {
+  const token = process.env.GH_TOKEN || process.env.GITHUB_TOKEN || ''
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), TIMEOUT)
+  try {
+    const res = await fetch(`https://api.github.com/users/${login}`, {
+      signal: controller.signal,
+      headers: {
+        'User-Agent': UA,
+        Accept: 'application/vnd.github+json',
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+    })
+    if (!res.ok) return null
+    return await res.json()
+  } catch {
+    return null
+  } finally {
+    clearTimeout(timer)
+  }
+}
+
+function githubLogin() {
+  // 从站点配置里取 GitHub 账号，避免在这里再维护一份用户名。
+  const raw = fs.readFileSync(CONFIG_FILE, 'utf8')
+  const match = raw.match(/https:\/\/github\.com\/([A-Za-z0-9-]+)/)
+  return match ? match[1] : null
+}
+
+async function syncFollowers() {
+  const login = githubLogin()
+  if (!login) return null
+
+  const user = await fetchGithubUser(login)
+  if (!user || typeof user.followers !== 'number') return null
+
+  const raw = fs.readFileSync(CONFIG_FILE, 'utf8')
+  // 注意 config.ts 里是缩进 + 行尾逗号的写法（`  githubFollowers: 1,`），
+  // 因此不能像 frontmatter 那样用 `^key:` 加 `$` 行尾来匹配。
+  const updated = raw.replace(/^([ \t]*githubFollowers:[ \t]*)\d+/m, `$1${user.followers}`)
+  if (updated === raw) return { login, value: user.followers, changed: false }
+  fs.writeFileSync(CONFIG_FILE, updated)
+  return { login, value: user.followers, changed: true }
+}
+
 async function syncProjects() {
   const files = listMarkdown(path.join(CONTENT, 'projects'))
   const jobs = files
@@ -176,11 +224,17 @@ async function main() {
   const posts = await syncPosts()
   posts.forEach(line => console.log(`  ✓ ${line}`))
 
-  if (projects.length === 0 && posts.length === 0) {
-    console.log('  数据已是最新，无需更新。')
+  console.log('同步 GitHub 关注者数 ...')
+  const followers = await syncFollowers()
+  if (!followers) {
+    console.log('  未获取到数据，保留原值。')
   } else {
-    console.log(`\n完成：更新 ${projects.length + posts.length} 项。`)
+    const suffix = followers.changed ? '' : '（已是最新）'
+    console.log(`  ✓ githubFollowers → ${followers.value}（${followers.login}）${suffix}`)
   }
+
+  const total = projects.length + posts.length + (followers && followers.changed ? 1 : 0)
+  console.log(total === 0 ? '\n数据已是最新，无需更新。' : `\n完成：更新 ${total} 项。`)
 }
 
 main().catch(err => {

@@ -139,22 +139,24 @@ links:
 
 ## 数据自动更新
 
-作品卡片上的 **GitHub 星标数**与文章卡片上的 **阅读 / 点赞 / 收藏**由脚本抓取：
+页面上的 **GitHub 关注者数**、作品卡片的 **GitHub 星标数**、文章卡片的 **阅读 / 点赞 / 收藏**都由脚本抓取：
 
 ```bash
 npm run sync-stats
 ```
 
-它做的事情：
+它做的事情（实现见 [`scripts/sync-stats.mjs`](scripts/sync-stats.mjs)）：
 
 1. 遍历 `content/projects/*.md`，对每个带 `github` 字段的作品抓取仓库星标数，写回 `stars:`
 2. 遍历 `content/blog/*.md`，对每个带 CSDN 链接的文章抓取阅读数据，写回 `stats:`
-3. 抓不到的条目**跳过并保留原值**，不会写入 0 或空值
+3. 读取 `lib/config.ts` 里的 GitHub 账号，抓取关注者数量，写回 `githubFollowers:`
+4. 抓不到的条目**跳过并保留原值**，不会写入 0 或空值
 
-实现上做了两处针对真实环境的处理（见 [`lib/stats.ts`](lib/stats.ts)）：
+针对真实环境踩过的坑，脚本里有三处专门处理：
 
 - **CSDN 有 Cloudflare 频率限制**，必须串行请求并留出间隔，否则返回 `521`
-- **GitHub 未鉴权 API 限流很严**，因此星标改为解析仓库页面 HTML，而不是调用 API
+- **GitHub 仓库星标**改为解析仓库页面 HTML（未鉴权 API 在共享 IP 上很容易返回 `403`）
+- **GitHub 关注者数**必须走 REST API——个人页上的数量是前端渲染的，抓 HTML 拿不到数字，因此 CI 会给这一步注入 `GITHUB_TOKEN`
 
 页面上通过 [`components/LiveStat.tsx`](components/LiveStat.tsx) 读取 `/api/stats`，成功则用最新值水合，失败则回落到 frontmatter 里的快照——**任何情况下都不会出现空白或报错**。
 

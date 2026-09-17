@@ -37,10 +37,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 抓取 GitHub 星标 / CSDN 阅读数据并写入 content/ 的 frontmatter。
-      # 站点数据完全来自 frontmatter，所以构建阶段不需要联网。
+      # 抓取 GitHub 星标 / 关注者数、CSDN 阅读数据，写入 content/ 与 lib/config.ts。
+      # 带上 GITHUB_TOKEN：调用 GitHub API 时需要，否则共享 IP 容易被限流。
       # 外部站点可能限流，失败时保留上一次的数据，不让部署挂掉。
       - name: Refresh stats from GitHub & CSDN
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: npm run sync-stats
         continue-on-error: true
 
