@@ -67,6 +67,10 @@ export function XiaohongshuIcon(props: IconProps) {
   return <BrandBadge {...props} glyph="红" color="#FF2442" />
 }
 
+export function WechatIcon(props: IconProps) {
+  return <BrandBadge {...props} glyph="微" color="#07C160" />
+}
+
 export function LinkBadgeIcon(props: IconProps) {
   return <BrandBadge {...props} glyph="↗" color="#8A8F98" />
 }

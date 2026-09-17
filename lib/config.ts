@@ -10,7 +10,8 @@ export const siteConfig = {
   descriptionEn:
     'A student at Sanda University and a full-stack developer, dedicated to the continuous exploration and practice of artificial intelligence, and an active member of the TRAE Chinese community.',
   avatar: '/images/avatar.jpg',
-  email: 'your@email.com',
+  email: '2643023410@qq.com',
+  wechat: 'A15051219872',
   githubFollowers: 1,
   social: [
     {

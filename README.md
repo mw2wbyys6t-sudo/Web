@@ -134,7 +134,7 @@ links:
 正文内容。
 ```
 
-> 站点信息（名字、简介、邮箱、社交账号、导航、技能、赛事与社区、GitHub 关注者数）统一在 [`lib/config.ts`](lib/config.ts) 修改。其中 `highlights` 对应首页「赛事与社区」区块，`githubFollowers` 对应 GitHub 区块显示的关注者数量。
+> 站点信息（名字、简介、邮箱 / 微信号、社交账号、导航、技能、赛事与社区、GitHub 关注者数）统一在 [`lib/config.ts`](lib/config.ts) 修改。其中 `highlights` 对应首页「赛事与社区」区块，`githubFollowers` 对应 GitHub 区块显示的关注者数量。
 
 ## 数据自动更新
 

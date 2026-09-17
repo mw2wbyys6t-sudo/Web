@@ -4,17 +4,29 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import GlassCard from '@/components/GlassCard'
 import { siteConfig } from '@/lib/config'
-import { Download, Send, MapPin } from 'lucide-react'
+import { Download, Send, MapPin, Mail, Copy, Check } from 'lucide-react'
 import SocialLinks from '@/components/SocialLinks'
+import { WechatIcon } from '@/components/icons/SocialIcons'
 import { useState } from 'react'
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
+  const [copied, setCopied] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitted(true)
     setTimeout(() => setSubmitted(false), 3000)
+  }
+
+  const copyWechat = async () => {
+    try {
+      await navigator.clipboard.writeText(siteConfig.wechat)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      // 剪贴板不可用（例如非 HTTPS 环境）时忽略，用户仍可手动选中复制
+    }
   }
 
   return (
@@ -63,10 +75,34 @@ export default function ContactPage() {
             {/* Social Links */}
             <SocialLinks variant="glass" size={20} className="justify-center mb-6" />
 
-            {/* Email */}
-            <p className="text-sm text-center mb-6" style={{ color: 'var(--text-secondary)' }}>
-              {siteConfig.email}
-            </p>
+            {/* Contact info */}
+            <div className="space-y-3 mb-6">
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="flex items-center justify-center gap-2 text-sm transition-colors hover:text-[var(--accent-pink)]"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                <Mail size={14} />
+                {siteConfig.email}
+              </a>
+              <div
+                className="flex items-center justify-center gap-2 text-sm"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                <WechatIcon width={14} height={14} />
+                <span>微信：{siteConfig.wechat}</span>
+                <button
+                  type="button"
+                  onClick={copyWechat}
+                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs transition-colors hover:text-[var(--accent-pink)]"
+                  style={{ background: 'var(--tag-bg)' }}
+                  aria-label="复制微信号"
+                >
+                  {copied ? <Check size={12} /> : <Copy size={12} />}
+                  {copied ? '已复制' : '复制'}
+                </button>
+              </div>
+            </div>
 
             {/* Download Resume */}
             <a href="#" className="glass-btn glass-btn-primary w-full flex items-center justify-center gap-2">
