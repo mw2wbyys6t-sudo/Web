@@ -189,7 +189,9 @@ GitHub Pages 的项目站点部署在 `https://<用户名>.github.io/<仓库名>
 2. **`public/.nojekyll`**——防止 Pages 的 Jekyll 处理忽略以下划线开头的 `_next` 资源目录
 3. **`/api/stats` 改为构建期生成**——静态托管没有 Node 运行时，因此该接口在构建时直接由 `content/` 的 frontmatter 生成一个静态 JSON
 
-> 首次部署前，需要确认仓库的 **Settings → Pages → Source** 为 **GitHub Actions**。
+> **首次部署前必须手动开启一次 Pages**（这一步无法由工作流自动完成，因为 `GITHUB_TOKEN` 没有创建 Pages 站点的权限）：
+> 进入仓库 **Settings → Pages → Build and deployment → Source**，选择 **GitHub Actions**。
+> 开启后工作流即可正常构建并发布，站点地址为 <https://mw2wbyys6t-sudo.github.io/Web/>。
 
 ## 许可
 
