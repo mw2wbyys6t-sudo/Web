@@ -50,6 +50,15 @@ jobs:
           NEXT_STATIC_EXPORT: "true"
         run: npm run build:pages
 
+      # 若仓库已存在 legacy（从分支部署）模式的 Pages 站点，需要切换为 GitHub Actions 模式，
+      # 否则 deploy-pages 会因「站点未配置为使用 Actions」而失败。
+      - name: Ensure Pages uses GitHub Actions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X PUT "/repos/${GITHUB_REPOSITORY}/pages" -f build_type=workflow \
+            || echo "::warning::无法自动切换 Pages 构建模式，请在 Settings → Pages → Source 手动选择 GitHub Actions"
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
