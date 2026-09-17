@@ -42,3 +42,4 @@ next-env.d.ts
 
 # tooling artifacts
 /.trae-html-share-packages/
+/.uploads/
