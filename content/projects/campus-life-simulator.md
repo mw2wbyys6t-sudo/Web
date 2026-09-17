@@ -3,7 +3,7 @@ title: "中学生生活模拟器"
 description: "用 Flutter + 鸿蒙（HarmonyOS）跨平台技术，从环境搭建开始，一步步构建出的校园生活模拟应用。"
 category: "跨平台应用"
 tags: ["Flutter", "HarmonyOS", "鸿蒙", "跨平台"]
-order: 3
+order: 7
 links:
   - label: "入门前奏篇"
     url: "/blog/flutter-harmony-prelude"

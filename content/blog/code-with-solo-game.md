@@ -7,15 +7,13 @@ tags: ["TRAE SOLO", "AI 编程", "游戏开发", "部署"]
 links:
   - label: "阅读原文（CSDN）"
     url: "https://blog.csdn.net/2501_94355779/article/details/160348455"
-  - label: "对应作品：节奏战争 Rhythm Warfare"
-    url: "/projects/rhythm-warfare"
-  - label: "在线试玩游戏"
-    url: "https://mw2wbyys6t-sudo.github.io/music-rpg-zombie-game/"
+  - label: "对应作品：律歌回响：鸣歌者"
+    url: "/projects/rhythmic-echoes"
 ---
 
 ## 摘要
 
-作为一个大一新生，我用 **TRAE SOLO** 完成了音乐打僵尸游戏的全面开发，从基础功能实现到视觉效果优化，**2 小时内跑完「代码编写 → 修 Bug → 部署上线」的全流程**，最终做出了一款像素风格的音乐射击游戏「节奏战争」。
+作为一个大一新生，我用 **TRAE SOLO** 完成了音乐打僵尸游戏的全面开发，从基础功能实现到视觉效果优化，**2 小时内跑完「代码编写 → 修 Bug → 部署上线」的全流程**，最终做出了一款像素风格的音乐射击游戏 —— 它后来定名为「律歌回响：鸣歌者」。
 
 > TRAE SOLO 是字节跳动旗下 AI 编程产品 TRAE 在 2026 年 3 月推出的独立 AI 智能体，核心是让 AI 主导执行任务，用户只需「提需求和验收结果」。
 
@@ -40,8 +38,8 @@ links:
 
 ## 成果
 
-游戏叫「节奏战争 Rhythm Warfare」，目前是初代版本，可以直接在线试玩：
+游戏最终命名为「律歌回响：鸣歌者」（Rhythm Echoes: The Songweaver），代码已经开源在 GitHub 上：
 
-👉 [mw2wbyys6t-sudo.github.io/music-rpg-zombie-game](https://mw2wbyys6t-sudo.github.io/music-rpg-zombie-game/)
+👉 [github.com/mw2wbyys6t-sudo/-Rhythmic-Echoes-The-Songweaver](https://github.com/mw2wbyys6t-sudo/-Rhythmic-Echoes-The-Songweaver)
 
 这个项目也参加了 **TRAE 社区挑战赛**（社区地址：[forum.trae.cn](https://forum.trae.cn/)）。

@@ -13,6 +13,13 @@ export const siteConfig = {
   email: 'your@email.com',
   social: [
     {
+      key: 'github',
+      name: 'GitHub',
+      nameEn: 'GitHub',
+      handle: '@mw2wbyys6t-sudo',
+      url: 'https://github.com/mw2wbyys6t-sudo',
+    },
+    {
       key: 'modelscope',
       name: '魔搭社区',
       nameEn: 'ModelScope',

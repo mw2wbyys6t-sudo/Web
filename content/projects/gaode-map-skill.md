@@ -3,11 +3,14 @@ title: "高德地图综合服务 Skill"
 description: "发布在魔搭社区的一个 AI Skill：把地点搜索、路径规划、智能旅游规划、餐饮选址分析和热力图可视化，封装成一句话就能调用的能力。"
 category: "AI 应用"
 tags: ["AI Skill", "高德 LBS", "ModelScope", "智能体"]
-order: 2
+order: 5
 link: "https://www.modelscope.cn/skills/ometlcic/gaode-skill"
+github: "https://github.com/mw2wbyys6t-sudo/gaode-skill-"
 links:
   - label: "发布页（魔搭社区）"
     url: "https://www.modelscope.cn/skills/ometlcic/gaode-skill"
+  - label: "源码（GitHub）"
+    url: "https://github.com/mw2wbyys6t-sudo/gaode-skill-"
   - label: "相关文章：我的第一个 Qoder Skill"
     url: "/blog/first-qoder-skill"
 ---
@@ -17,6 +20,10 @@ links:
 「高德地图综合服务」是我发布在 **魔搭社区（ModelScope）** 上的一个 AI Skill —— 让你用自然语言就能完成一整套地图相关操作。
 
 调用方式很简单：直接说「西直门周边美食」「帮我规划杭州一日游」「在春熙路开火锅店怎么样」，Skill 会自动识别意图并执行。
+
+## 创作初衷
+
+最初想做这个 Skill，是想**提供语音播报**能力；后来发现它在**餐饮选址**（受 B 站「勇哥餐饮」启发）和**旅游踩点**这类场景里格外实用。项目目前在持续更新中。
 
 ## 核心能力
 
