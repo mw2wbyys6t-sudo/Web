@@ -1,53 +1,26 @@
-import { NextResponse } from 'next/server'
-import { fetchProjectStars, fetchPostStats } from '@/lib/stats'
+import { getAllPosts, getAllProjects } from '@/lib/content'
+import type { ContentStats } from '@/lib/types'
 
-export const runtime = 'nodejs'
-export const dynamic = 'force-dynamic'
-
-const GITHUB_TTL = 60 * 60 * 1000
-const CSDN_TTL = 6 * 60 * 60 * 1000
-
-type ProjectMap = Record<string, number>
-type PostMap = Record<string, { views: number; likes: number; favorites: number }>
-
-interface Slot<T> {
-  data: T
-  at: number
-  refreshing: Promise<void> | null
-}
-
-const projectsSlot: Slot<ProjectMap> = { data: {}, at: 0, refreshing: null }
-const postsSlot: Slot<PostMap> = { data: {}, at: 0, refreshing: null }
-
-function refresh<T>(slot: Slot<T>, loader: () => Promise<T>) {
-  if (slot.refreshing) return
-  slot.refreshing = loader()
-    .then(data => {
-      // 只有拿到数据才刷新时间戳，避免抓取失败时把空结果缓存一整个周期。
-      if (Object.keys(data as object).length > 0) {
-        slot.data = data
-        slot.at = Date.now()
-      }
-    })
-    .catch(() => {
-      /* 保留旧缓存 */
-    })
-    .finally(() => {
-      slot.refreshing = null
-    })
-}
+// 静态导出（GitHub Pages）只支持「构建期预渲染」的 Route Handler。
+// 数据来源与页面保持一致：content/ 下 frontmatter 里的快照，
+// 由 `npm run sync-stats` 抓取并写入（部署流水线会在构建前执行）。
+// 这样构建过程完全不联网：既快，也不会因为外部抓取失败而中断部署。
+export const dynamic = 'force-static'
 
 export async function GET() {
-  // 全部走「内存缓存 + 后台刷新」，接口本身永不阻塞在外部请求上。
-  if (Date.now() - projectsSlot.at > GITHUB_TTL) refresh(projectsSlot, fetchProjectStars)
-  if (Date.now() - postsSlot.at > CSDN_TTL) refresh(postsSlot, fetchPostStats)
+  const projects: Record<string, number> = {}
+  for (const project of getAllProjects()) {
+    if (typeof project.stars === 'number') projects[project.slug] = project.stars
+  }
 
-  return NextResponse.json(
-    {
-      projects: projectsSlot.data,
-      posts: postsSlot.data,
-      updatedAt: new Date().toISOString(),
-    },
-    { headers: { 'Cache-Control': 'no-store' } }
-  )
+  const posts: Record<string, ContentStats> = {}
+  for (const post of getAllPosts()) {
+    if (post.stats) posts[post.slug] = post.stats
+  }
+
+  return Response.json({
+    projects,
+    posts,
+    updatedAt: new Date().toISOString(),
+  })
 }

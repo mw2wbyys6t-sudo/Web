@@ -8,6 +8,9 @@ export interface StatsPayload {
   updatedAt?: string
 }
 
+// 静态部署在 GitHub Pages 子路径下，接口地址必须带上 basePath。
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+
 let memory: StatsPayload | null = null
 let inflight: Promise<StatsPayload | null> | null = null
 
@@ -17,7 +20,7 @@ function loadStats(): Promise<StatsPayload | null> {
 
   inflight = (async () => {
     try {
-      const res = await fetch('/api/stats', { cache: 'no-store' })
+      const res = await fetch(`${BASE_PATH}/api/stats`, { cache: 'no-store' })
       if (!res.ok) return null
       const data = (await res.json()) as StatsPayload
       memory = data
