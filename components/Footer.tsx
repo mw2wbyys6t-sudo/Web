@@ -1,10 +1,11 @@
 import { siteConfig } from '@/lib/config'
-import { Github, Twitter, Linkedin, Mail, Heart } from 'lucide-react'
+import { Mail, Heart } from 'lucide-react'
+import { GithubIcon, TwitterIcon, LinkedinIcon } from './icons/BrandIcons'
 
 const socialIcons = [
-  { icon: Github, href: siteConfig.social.github, label: 'GitHub' },
-  { icon: Twitter, href: siteConfig.social.twitter, label: 'Twitter' },
-  { icon: Linkedin, href: siteConfig.social.linkedin, label: 'LinkedIn' },
+  { icon: GithubIcon, href: siteConfig.social.github, label: 'GitHub' },
+  { icon: TwitterIcon, href: siteConfig.social.twitter, label: 'Twitter' },
+  { icon: LinkedinIcon, href: siteConfig.social.linkedin, label: 'LinkedIn' },
   { icon: Mail, href: `mailto:${siteConfig.email}`, label: 'Email' },
 ]
 
@@ -31,7 +32,7 @@ export default function Footer() {
                 style={{ color: 'var(--text-secondary)' }}
                 aria-label={label}
               >
-                <Icon size={18} />
+                <Icon width={18} height={18} />
               </a>
             ))}
           </div>

@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion'
 import GlassCard from '@/components/GlassCard'
 import { siteConfig } from '@/lib/config'
-import { Github, Twitter, Linkedin, Mail, Download, Send } from 'lucide-react'
+import { Mail, Download, Send } from 'lucide-react'
+import { GithubIcon, TwitterIcon, LinkedinIcon } from '@/components/icons/BrandIcons'
 import { useState } from 'react'
 
 export default function ContactPage() {
@@ -50,13 +51,13 @@ export default function ContactPage() {
             {/* Social Links */}
             <div className="flex justify-center gap-4 mb-6">
               <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full glass-btn !p-3">
-                <Github size={20} />
+                <GithubIcon width={20} height={20} />
               </a>
               <a href={siteConfig.social.twitter} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full glass-btn !p-3">
-                <Twitter size={20} />
+                <TwitterIcon width={20} height={20} />
               </a>
               <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" className="p-3 rounded-full glass-btn !p-3">
-                <Linkedin size={20} />
+                <LinkedinIcon width={20} height={20} />
               </a>
               <a href={`mailto:${siteConfig.email}`} className="p-3 rounded-full glass-btn !p-3">
                 <Mail size={20} />

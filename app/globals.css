@@ -213,6 +213,143 @@ body {
   animation: float 3s ease-in-out infinite;
 }
 
+/* ===== Theme Toggle Icons (CSS-driven, hydration safe) ===== */
+.theme-icon-moon {
+  display: none;
+}
+
+.dark .theme-icon-sun {
+  display: none;
+}
+
+.dark .theme-icon-moon {
+  display: block;
+}
+
+/* ===== Markdown Prose ===== */
+.prose-glass {
+  color: var(--text-primary);
+  line-height: 1.85;
+  font-size: 16px;
+}
+
+.prose-glass > :first-child {
+  margin-top: 0;
+}
+
+.prose-glass h1,
+.prose-glass h2,
+.prose-glass h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.prose-glass h1 {
+  font-size: 1.75rem;
+  margin: 2rem 0 1rem;
+}
+
+.prose-glass h2 {
+  font-size: 1.4rem;
+  margin: 1.8rem 0 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.prose-glass h3 {
+  font-size: 1.15rem;
+  margin: 1.4rem 0 0.6rem;
+}
+
+.prose-glass p {
+  margin: 0.9rem 0;
+}
+
+.prose-glass ul,
+.prose-glass ol {
+  margin: 0.9rem 0;
+  padding-left: 1.4rem;
+}
+
+.prose-glass ul {
+  list-style: disc;
+}
+
+.prose-glass ol {
+  list-style: decimal;
+}
+
+.prose-glass li {
+  margin: 0.35rem 0;
+}
+
+.prose-glass a {
+  color: var(--accent-pink);
+  text-decoration: underline;
+}
+
+.prose-glass strong {
+  font-weight: 600;
+}
+
+.prose-glass code {
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+.prose-glass pre {
+  background: var(--input-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 1.2rem 0;
+}
+
+.prose-glass pre code {
+  background: transparent;
+  color: var(--text-primary);
+  padding: 0;
+  border-radius: 0;
+  font-size: 13.5px;
+}
+
+.prose-glass blockquote {
+  border-left: 3px solid var(--accent-pink);
+  padding-left: 1rem;
+  margin: 1.2rem 0;
+  color: var(--text-secondary);
+}
+
+.prose-glass img {
+  max-width: 100%;
+  border-radius: 14px;
+  margin: 1.2rem 0;
+}
+
+.prose-glass hr {
+  border: none;
+  border-top: 1px solid var(--glass-border);
+  margin: 2rem 0;
+}
+
+.prose-glass table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0;
+}
+
+.prose-glass th,
+.prose-glass td {
+  border: 1px solid var(--glass-border);
+  padding: 8px 12px;
+  text-align: left;
+}
+
 /* ===== Selection ===== */
 ::selection {
   background: var(--accent-pink);

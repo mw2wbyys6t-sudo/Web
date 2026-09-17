@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import ParticleBackground from "@/components/ParticleBackground"
 import { siteConfig } from "@/lib/config"
+import { themeInitScript } from "@/lib/theme-script"
 
 const notoSans = Noto_Sans_SC({
   variable: "--font-sans",
@@ -36,6 +37,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${notoSans.variable} ${notoSerif.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="min-h-full flex flex-col">
         <Providers>
           <ParticleBackground />

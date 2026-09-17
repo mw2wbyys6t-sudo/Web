@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { useTheme } from 'next-themes'
+import { useTheme } from './ThemeProvider'
 
 interface Particle {
   x: number
@@ -16,7 +16,7 @@ interface Particle {
 
 export default function ParticleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const { theme, resolvedTheme } = useTheme()
+  const { theme } = useTheme()
   const animRef = useRef<number>(0)
   const particlesRef = useRef<Particle[]>([])
 
@@ -47,7 +47,7 @@ export default function ParticleBackground() {
       rotationSpeed: (Math.random() - 0.5) * 0.02,
     }))
 
-    const isDark = resolvedTheme === 'dark'
+    const isDark = theme === 'dark'
 
     const drawPetal = (ctx: CanvasRenderingContext2D, p: Particle) => {
       ctx.save()
@@ -126,7 +126,7 @@ export default function ParticleBackground() {
       window.removeEventListener('resize', resize)
       cancelAnimationFrame(animRef.current)
     }
-  }, [resolvedTheme])
+  }, [theme])
 
   return (
     <canvas
