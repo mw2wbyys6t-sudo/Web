@@ -42,7 +42,7 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
           >
             <div className="w-56 h-72 md:w-64 md:h-80 rounded-3xl overflow-hidden glass-card !p-0 relative">
               {avatar ? (
-                <Image src={avatar} alt={siteConfig.name} fill className="object-cover" priority />
+                <Image src={avatar} alt={siteConfig.name} fill sizes="(max-width: 768px) 224px, 256px" className="object-cover" priority />
               ) : (
                 <>
                   <div

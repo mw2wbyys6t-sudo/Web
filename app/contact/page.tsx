@@ -39,7 +39,7 @@ export default function ContactPage() {
           <GlassCard delay={0.1} className="p-8">
             {/* Avatar */}
             <div className="w-24 h-24 rounded-full mx-auto mb-6 overflow-hidden relative">
-              <Image src={siteConfig.avatar} alt={siteConfig.name} fill className="object-cover" />
+              <Image src={siteConfig.avatar} alt={siteConfig.name} fill sizes="96px" className="object-cover" />
             </div>
 
             <h2 className="text-xl font-semibold text-center mb-2">{siteConfig.name}</h2>

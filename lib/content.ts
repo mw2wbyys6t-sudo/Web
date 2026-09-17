@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import { remark } from 'remark'
+import remarkGfm from 'remark-gfm'
 import html from 'remark-html'
 import type { BlogPost, Project } from './types'
 
@@ -23,6 +24,7 @@ export function getAllPosts(): BlogPost[] {
       title: data.title || slug,
       date: data.date || '',
       excerpt: data.excerpt || '',
+      category: data.category || '未分类',
       tags: data.tags || [],
       content,
     }
@@ -37,7 +39,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
 }
 
 export async function markdownToHtml(markdown: string): Promise<string> {
-  const result = await remark().use(html).process(markdown)
+  const result = await remark().use(remarkGfm).use(html).process(markdown)
   return result.toString()
 }
 
@@ -46,7 +48,7 @@ export function getAllProjects(): Project[] {
   if (!fs.existsSync(projectsDir)) return []
 
   const files = fs.readdirSync(projectsDir).filter(f => f.endsWith('.md'))
-  return files.map(filename => {
+  const projects = files.map(filename => {
     const slug = filename.replace(/\.md$/, '')
     const fullPath = path.join(projectsDir, filename)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
@@ -56,13 +58,17 @@ export function getAllProjects(): Project[] {
       slug,
       title: data.title || slug,
       description: data.description || '',
+      category: data.category || '未分类',
       tags: data.tags || [],
       image: data.image || '/images/project-placeholder.png',
+      order: typeof data.order === 'number' ? data.order : 999,
       link: data.link || '',
       github: data.github || '',
       content,
     }
   })
+
+  return projects.sort((a, b) => a.order - b.order)
 }
 
 export function getProjectBySlug(slug: string): Project | null {

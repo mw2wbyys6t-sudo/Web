@@ -161,6 +161,17 @@ body {
   color: #fff;
 }
 
+button.glass-tag {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.glass-tag-active,
+.glass-tag-active:hover {
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
+  color: #fff;
+}
+
 /* ===== Navbar ===== */
 .glass-nav {
   background: var(--nav-bg);
