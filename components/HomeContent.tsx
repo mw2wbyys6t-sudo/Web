@@ -2,12 +2,18 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import GlassCard from './GlassCard'
 import GithubCta from './GithubCta'
+import WaveDivider from './WaveDivider'
 import { GithubIcon } from './icons/BrandIcons'
 import { siteConfig } from '@/lib/config'
-import { ArrowRight, Sparkles, MapPin } from 'lucide-react'
+import { ArrowRight, Sparkles, MapPin, Sparkle } from 'lucide-react'
+
+const MARQUEE_WORDS = [
+  'AI AGENT', '二次元', 'CREATIVE CODE', '开源', 'HARMONYOS', '智能体',
+  'NEXT.JS', '赛博', 'SKILL', '探索', 'FLUTTER', '未来感',
+]
 
 export interface HomeProject {
   slug: string
@@ -30,10 +36,17 @@ interface HomeContentProps {
 }
 
 export default function HomeContent({ projects, posts, avatar }: HomeContentProps) {
+  const { scrollY } = useScroll()
+  const heroY = useTransform(scrollY, [0, 600], [0, 120])
+  const heroOpacity = useTransform(scrollY, [0, 500], [1, 0.25])
+
   return (
     <div className="relative z-10">
       {/* Hero Section */}
-      <section className="min-h-[85vh] flex items-center justify-center px-6">
+      <motion.section
+        style={{ y: heroY, opacity: heroOpacity }}
+        className="min-h-[85vh] flex items-center justify-center px-6"
+      >
         <div className="max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center gap-12">
           {/* Avatar */}
           <motion.div
@@ -77,12 +90,15 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
             className="flex-1 text-center md:text-left"
           >
             <h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-flow"
               style={{ fontFamily: 'var(--font-display)' }}
             >
               {siteConfig.title}
             </h1>
-            <p className="text-base md:text-lg mb-5" style={{ color: 'var(--text-secondary)' }}>
+            <p
+              className="text-base md:text-lg mb-5 tracking-wider"
+              style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-latin)' }}
+            >
               {siteConfig.titleEn}
             </p>
             <p className="text-lg md:text-xl mb-1 text-[var(--accent-pink)]">
@@ -110,7 +126,29 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
             </div>
           </motion.div>
         </div>
-      </section>
+      </motion.section>
+
+      {/* Marquee 跑马灯 */}
+      <div className="marquee py-4" aria-hidden="true">
+        <div className="marquee-track">
+          {[0, 1].map(half => (
+            <div key={half} className="flex items-center">
+              {MARQUEE_WORDS.map(word => (
+                <span
+                  key={`${half}-${word}`}
+                  className="flex items-center gap-3 px-6 text-sm font-semibold tracking-widest whitespace-nowrap"
+                  style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-latin)' }}
+                >
+                  <Sparkle size={12} className="text-[var(--accent-violet)]" />
+                  {word}
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <WaveDivider />
 
       {/* Skills Section */}
       <section id="about" className="py-20 px-6">
@@ -122,6 +160,12 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
             className="text-3xl font-bold text-center mb-12"
             style={{ fontFamily: 'var(--font-display)' }}
           >
+            <span
+              className="block text-xs tracking-[0.4em] mb-3 uppercase"
+              style={{ color: 'var(--accent-violet)', fontFamily: 'var(--font-latin)' }}
+            >
+              Skills
+            </span>
             我的技能
           </motion.h2>
 
@@ -140,6 +184,8 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
         </div>
       </section>
 
+      <WaveDivider flip />
+
       {/* Featured Projects */}
       {projects.length > 0 && (
         <section className="py-20 px-6">
@@ -151,6 +197,12 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
               className="text-3xl font-bold text-center mb-12"
               style={{ fontFamily: 'var(--font-display)' }}
             >
+              <span
+                className="block text-xs tracking-[0.4em] mb-3 uppercase"
+                style={{ color: 'var(--accent-violet)', fontFamily: 'var(--font-latin)' }}
+              >
+                Works
+              </span>
               精选作品
             </motion.h2>
 
@@ -228,6 +280,8 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
         </div>
       </section>
 
+      <WaveDivider />
+
       {/* Latest Posts */}
       {posts.length > 0 && (
         <section className="py-20 px-6">
@@ -239,6 +293,12 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
               className="text-3xl font-bold text-center mb-12"
               style={{ fontFamily: 'var(--font-display)' }}
             >
+              <span
+                className="block text-xs tracking-[0.4em] mb-3 uppercase"
+                style={{ color: 'var(--accent-violet)', fontFamily: 'var(--font-latin)' }}
+              >
+                Blog
+              </span>
               最新文章
             </motion.h2>
 

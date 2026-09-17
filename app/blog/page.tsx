@@ -20,7 +20,7 @@ export default function BlogPage() {
   return (
     <div className="relative z-10 px-6 py-20">
       <div className="max-w-4xl mx-auto">
-        <PageHeader title="我的文章" subtitle="记录 AI 智能体、AI 编程与鸿蒙跨平台开发的实践与踩坑" />
+        <PageHeader eyebrow="Blog" title="我的文章" subtitle="记录 AI 智能体、AI 编程与鸿蒙跨平台开发的实践与踩坑" />
         <BlogList posts={posts} />
       </div>
     </div>

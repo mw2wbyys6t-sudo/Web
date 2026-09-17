@@ -26,7 +26,13 @@ export default function ContactPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: 'var(--font-display)' }}>
+          <p
+            className="text-xs tracking-[0.4em] uppercase mb-4"
+            style={{ color: 'var(--accent-violet)', fontFamily: 'var(--font-latin)' }}
+          >
+            Contact
+          </p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-flow" style={{ fontFamily: 'var(--font-display)' }}>
             联系我
           </h1>
           <p className="text-lg" style={{ color: 'var(--text-secondary)' }}>
