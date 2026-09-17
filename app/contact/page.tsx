@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import GlassCard from '@/components/GlassCard'
 import { siteConfig } from '@/lib/config'
-import { Mail, Download, Send } from 'lucide-react'
+import { Mail, Download, Send, MapPin } from 'lucide-react'
 import { GithubIcon, TwitterIcon, LinkedinIcon } from '@/components/icons/BrandIcons'
 import { useState } from 'react'
 
@@ -44,9 +44,16 @@ export default function ContactPage() {
             </div>
 
             <h2 className="text-xl font-semibold text-center mb-2">{siteConfig.name}</h2>
-            <p className="text-sm text-center mb-6" style={{ color: 'var(--text-secondary)' }}>
+            <p className="text-sm text-center mb-1" style={{ color: 'var(--text-secondary)' }}>
               {siteConfig.subtitle}
             </p>
+            <p className="text-xs text-center mb-3" style={{ color: 'var(--text-secondary)' }}>
+              {siteConfig.subtitleEn}
+            </p>
+            <div className="flex items-center justify-center gap-1 text-xs mb-6" style={{ color: 'var(--text-secondary)' }}>
+              <MapPin size={12} />
+              {siteConfig.location} · {siteConfig.locationEn}
+            </div>
 
             {/* Social Links */}
             <div className="flex justify-center gap-4 mb-6">

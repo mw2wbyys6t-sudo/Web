@@ -22,10 +22,10 @@ const notoSerif = Noto_Serif_SC({
 
 export const metadata: Metadata = {
   title: siteConfig.name + ' | 个人网站',
-  description: siteConfig.description,
+  description: siteConfig.description + ' ' + siteConfig.descriptionEn,
   openGraph: {
     title: siteConfig.name + ' | 个人网站',
-    description: siteConfig.description,
+    description: siteConfig.description + ' ' + siteConfig.descriptionEn,
     type: 'website',
   },
 }

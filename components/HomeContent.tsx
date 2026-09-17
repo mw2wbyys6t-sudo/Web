@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import GlassCard from './GlassCard'
 import { siteConfig } from '@/lib/config'
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { ArrowRight, Sparkles, MapPin } from 'lucide-react'
 
 export interface HomeProject {
   slug: string
@@ -80,8 +80,25 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
             >
               {siteConfig.title}
             </h1>
-            <p className="text-lg md:text-xl mb-8" style={{ color: 'var(--text-secondary)' }}>
+            <p className="text-base md:text-lg mb-5" style={{ color: 'var(--text-secondary)' }}>
+              {siteConfig.titleEn}
+            </p>
+            <p className="text-lg md:text-xl mb-1 text-[var(--accent-pink)]">
               {siteConfig.subtitle}
+            </p>
+            <p className="text-sm md:text-base mb-5" style={{ color: 'var(--text-secondary)' }}>
+              {siteConfig.subtitleEn}
+            </p>
+            <div className="flex justify-center md:justify-start mb-5">
+              <span className="glass-tag inline-flex items-center gap-1.5">
+                <MapPin size={14} />
+                {siteConfig.location} · {siteConfig.locationEn}
+              </span>
+            </div>
+            <p className="text-sm md:text-base mb-8 max-w-xl leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              {siteConfig.description}
+              <br />
+              <span className="opacity-80">{siteConfig.descriptionEn}</span>
             </p>
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
               <Link href="/projects" className="glass-btn glass-btn-primary flex items-center gap-2">
