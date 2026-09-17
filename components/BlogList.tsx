@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import GlassCard from './GlassCard'
 import { Calendar, Tag, FolderOpen, Eye, ThumbsUp, Bookmark } from 'lucide-react'
+import LiveStat from './LiveStat'
 
 export interface BlogListItem {
   slug: string
@@ -80,13 +81,13 @@ export default function BlogList({ posts }: { posts: BlogListItem[] }) {
                   {post.stats && (
                     <span className="inline-flex items-center gap-3 ml-auto">
                       <span className="inline-flex items-center gap-1">
-                        <Eye size={13} /> {post.stats.views}
+                        <Eye size={13} /> <LiveStat kind="views" slug={post.slug} fallback={post.stats.views} />
                       </span>
                       <span className="inline-flex items-center gap-1">
-                        <ThumbsUp size={13} /> {post.stats.likes}
+                        <ThumbsUp size={13} /> <LiveStat kind="likes" slug={post.slug} fallback={post.stats.likes} />
                       </span>
                       <span className="inline-flex items-center gap-1">
-                        <Bookmark size={13} /> {post.stats.favorites}
+                        <Bookmark size={13} /> <LiveStat kind="favorites" slug={post.slug} fallback={post.stats.favorites} />
                       </span>
                     </span>
                   )}

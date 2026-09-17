@@ -5,7 +5,7 @@ category: "鸿蒙跨平台"
 excerpt: "环境搭好之后，终于可以真正动手了。这篇讲我如何基于 Flutter + 鸿蒙，初步完成一个「中学生生活模拟器」App 的开发。"
 tags: ["Flutter", "HarmonyOS", "实战"]
 stats:
-  views: 428
+  views: 432
   likes: 4
   favorites: 6
 links:

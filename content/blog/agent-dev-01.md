@@ -5,7 +5,7 @@ category: "AI 智能体"
 excerpt: "作为一个编程能力不强的人，我最终选了「Coze 搭逻辑 + TRAE 写代码」的组合来开发智能体。这篇聊聊这两个平台到底是什么、各自的优缺点，以及我踩的第一个坑。"
 tags: ["Coze", "TRAE", "AI 智能体", "入门"]
 stats:
-  views: 773
+  views: 782
   likes: 16
   favorites: 10
 links:

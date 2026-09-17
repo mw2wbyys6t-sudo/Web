@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 import GlassCard from './GlassCard'
 import { ExternalLink, FolderOpen, Star } from 'lucide-react'
 import { GithubIcon } from './icons/BrandIcons'
+import LiveStat from './LiveStat'
 
 export interface ProjectListItem {
   slug: string
@@ -104,7 +105,7 @@ export default function ProjectList({ projects }: { projects: ProjectListItem[] 
                       title="GitHub Stars"
                     >
                       <Star size={12} className="text-[var(--accent-pink)]" fill="currentColor" />
-                      {project.stars}
+                      <LiveStat kind="stars" slug={project.slug} fallback={project.stars} />
                     </span>
                   )}
                 </div>

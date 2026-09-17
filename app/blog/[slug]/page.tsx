@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { getAllPosts, getPostBySlug, markdownToHtml } from '@/lib/content'
 import { ArrowLeft, Calendar, FolderOpen, Eye, ThumbsUp, Bookmark } from 'lucide-react'
 import ContentLinks from '@/components/ContentLinks'
+import LiveStat from '@/components/LiveStat'
 
 export function generateStaticParams() {
   return getAllPosts().map(post => ({ slug: post.slug }))
@@ -60,13 +61,13 @@ export default async function BlogPostPage({
             {post.stats && (
               <span className="inline-flex items-center gap-3">
                 <span className="inline-flex items-center gap-1" title="阅读量">
-                  <Eye size={13} /> {post.stats.views}
+                  <Eye size={13} /> <LiveStat kind="views" slug={post.slug} fallback={post.stats.views} />
                 </span>
                 <span className="inline-flex items-center gap-1" title="点赞">
-                  <ThumbsUp size={13} /> {post.stats.likes}
+                  <ThumbsUp size={13} /> <LiveStat kind="likes" slug={post.slug} fallback={post.stats.likes} />
                 </span>
                 <span className="inline-flex items-center gap-1" title="收藏">
-                  <Bookmark size={13} /> {post.stats.favorites}
+                  <Bookmark size={13} /> <LiveStat kind="favorites" slug={post.slug} fallback={post.stats.favorites} />
                 </span>
               </span>
             )}

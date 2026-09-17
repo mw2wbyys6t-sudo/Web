@@ -5,9 +5,9 @@ category: "AI 智能体"
 excerpt: "把高德开放平台的 LBS 能力封装成一个可复用的 Skill，是我第一次完整走通「调用第三方开放平台能力」的实践。"
 tags: ["Qoder", "高德开放平台", "AI Skill", "LBS"]
 stats:
-  views: 418
-  likes: 3
-  favorites: 0
+  views: 427
+  likes: 9
+  favorites: 3
 links:
   - label: "阅读原文（CSDN）"
     url: "https://blog.csdn.net/2501_94355779/article/details/162348214"

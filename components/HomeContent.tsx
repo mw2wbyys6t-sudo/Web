@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import GlassCard from './GlassCard'
 import GithubCta from './GithubCta'
 import WaveDivider from './WaveDivider'
+import LiveStat from './LiveStat'
 import { GithubIcon } from './icons/BrandIcons'
 import { siteConfig } from '@/lib/config'
 import { ArrowRight, Sparkles, MapPin, Sparkle, Star, Eye, ThumbsUp, Bookmark } from 'lucide-react'
@@ -235,7 +236,7 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
                           title="GitHub Stars"
                         >
                           <Star size={12} className="text-[var(--accent-pink)]" fill="currentColor" />
-                          {project.stars}
+                          <LiveStat kind="stars" slug={project.slug} fallback={project.stars} />
                         </span>
                       )}
                     </div>
@@ -337,13 +338,13 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
                         style={{ color: 'var(--text-secondary)' }}
                       >
                         <span className="inline-flex items-center gap-1">
-                          <Eye size={13} /> {post.stats.views}
+                          <Eye size={13} /> <LiveStat kind="views" slug={post.slug} fallback={post.stats.views} />
                         </span>
                         <span className="inline-flex items-center gap-1">
-                          <ThumbsUp size={13} /> {post.stats.likes}
+                          <ThumbsUp size={13} /> <LiveStat kind="likes" slug={post.slug} fallback={post.stats.likes} />
                         </span>
                         <span className="inline-flex items-center gap-1">
-                          <Bookmark size={13} /> {post.stats.favorites}
+                          <Bookmark size={13} /> <LiveStat kind="favorites" slug={post.slug} fallback={post.stats.favorites} />
                         </span>
                       </div>
                     )}
