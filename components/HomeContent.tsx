@@ -4,6 +4,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import GlassCard from './GlassCard'
+import GithubCta from './GithubCta'
+import { GithubIcon } from './icons/BrandIcons'
 import { siteConfig } from '@/lib/config'
 import { ArrowRight, Sparkles, MapPin } from 'lucide-react'
 
@@ -187,6 +189,44 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
           </div>
         </section>
       )}
+
+      {/* GitHub CTA */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <GlassCard className="p-8 md:p-12 text-center">
+              <div className="flex justify-center mb-6">
+                <span
+                  className="inline-flex items-center justify-center w-16 h-16 rounded-2xl"
+                  style={{
+                    background: 'linear-gradient(135deg, var(--accent-pink), var(--accent-blue))',
+                    color: '#fff',
+                  }}
+                >
+                  <GithubIcon width={32} height={32} />
+                </span>
+              </div>
+              <h2
+                className="text-2xl md:text-3xl font-bold mb-4"
+                style={{ fontFamily: 'var(--font-display)' }}
+              >
+                我的开源项目都在 GitHub
+              </h2>
+              <p
+                className="text-sm md:text-base mb-8 max-w-2xl mx-auto leading-relaxed"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                这里展示的每一个作品，完整源码、开发过程与后续更新都托管在我的 GitHub 仓库，欢迎前往查看、star 与交流。
+              </p>
+              <GithubCta />
+            </GlassCard>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Latest Posts */}
       {posts.length > 0 && (
