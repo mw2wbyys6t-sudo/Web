@@ -1,5 +1,7 @@
 export const siteConfig = {
   name: '0mecihuatl',
+  // 站点对外访问地址（GitHub Pages 项目站点），用于 SEO 的 canonical / OG 分享卡片。
+  url: 'https://mw2wbyys6t-sudo.github.io/Web/',
   title: '你好，我是 0mecihuatl',
   titleEn: "Hi, I'm 0mecihuatl",
   subtitle: '全栈开发者 · TRAE 专业用户 · AI 深度探索者',
@@ -9,6 +11,18 @@ export const siteConfig = {
   description: '上海杉达学院在校生，全栈开发方向，专注于人工智能领域的不断探索与实践，长期活跃于 TRAE 中文社区。',
   descriptionEn:
     'A student at Sanda University and a full-stack developer, dedicated to the continuous exploration and practice of artificial intelligence, and an active member of the TRAE Chinese community.',
+  keywords: [
+    '0mecihuatl',
+    '个人网站',
+    '作品集',
+    '技术博客',
+    '全栈开发',
+    'Next.js',
+    'React',
+    'TypeScript',
+    'AI 智能体',
+    'TRAE',
+  ],
   avatar: '/images/avatar.jpg',
   email: '2643023410@qq.com',
   wechat: 'A15051219872',

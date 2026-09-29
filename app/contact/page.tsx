@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import GlassCard from '@/components/GlassCard'
 import { siteConfig } from '@/lib/config'
-import { Download, Send, MapPin, Mail, Copy, Check } from 'lucide-react'
+import { Send, MapPin, Mail, Copy, Check } from 'lucide-react'
 import SocialLinks from '@/components/SocialLinks'
 import { WechatIcon } from '@/components/icons/SocialIcons'
 import { useState } from 'react'
@@ -104,9 +104,13 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Download Resume */}
-            <a href="#" className="glass-btn glass-btn-primary w-full flex items-center justify-center gap-2">
-              <Download size={18} /> 下载简历
+            {/* 站点暂未随仓库附带简历 PDF，所以先走邮件索取，避免出现点了没反应的死链。
+                日后想开放直接下载：把文件放到 public/resume.pdf，再把下方 href 换成 "/resume.pdf" 即可。 */}
+            <a
+              href={`mailto:${siteConfig.email}?subject=${encodeURIComponent('简历索取 · 来自个人网站')}`}
+              className="glass-btn glass-btn-primary w-full flex items-center justify-center gap-2"
+            >
+              <Mail size={18} /> 邮件索取简历
             </a>
           </GlassCard>
 

@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import GlassCard from './GlassCard'
-import { Calendar, Tag, FolderOpen, Eye, ThumbsUp, Bookmark } from 'lucide-react'
+import { Calendar, Tag, FolderOpen, Eye, ThumbsUp, Bookmark, Search, X } from 'lucide-react'
 import LiveStat from './LiveStat'
 
 export interface BlogListItem {
@@ -24,6 +24,7 @@ export default function BlogList({ posts }: { posts: BlogListItem[] }) {
   }, [posts])
 
   const [active, setActive] = useState('全部')
+  const [query, setQuery] = useState('')
 
   if (posts.length === 0) {
     return (
@@ -33,11 +34,48 @@ export default function BlogList({ posts }: { posts: BlogListItem[] }) {
     )
   }
 
-  const visible = active === '全部' ? posts : posts.filter(p => p.category === active)
+  const keyword = query.trim().toLowerCase()
+  const visible = posts.filter(post => {
+    if (active !== '全部' && post.category !== active) return false
+    if (!keyword) return true
+    return [post.title, post.excerpt, post.category, ...post.tags]
+      .join(' ')
+      .toLowerCase()
+      .includes(keyword)
+  })
 
   return (
     <div>
-      <div className="flex flex-wrap gap-3 justify-center mb-10">
+      {/* 搜索框：按标题 / 摘要 / 分类 / 标签做纯前端匹配 */}
+      <div className="relative max-w-xl mx-auto mb-8">
+        <Search
+          size={18}
+          className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none"
+          style={{ color: 'var(--text-secondary)' }}
+        />
+        <input
+          type="text"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          placeholder="搜索标题、摘要或标签…"
+          aria-label="搜索文章"
+          className="glass-input"
+          style={{ paddingLeft: 46, paddingRight: query ? 44 : 16 }}
+        />
+        {query && (
+          <button
+            type="button"
+            onClick={() => setQuery('')}
+            aria-label="清空搜索"
+            className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex items-center justify-center w-7 h-7 rounded-full transition-colors hover:text-[var(--accent-pink)]"
+            style={{ color: 'var(--text-secondary)', background: 'var(--tag-bg)' }}
+          >
+            <X size={14} />
+          </button>
+        )}
+      </div>
+
+      <div className="flex flex-wrap gap-3 justify-center mb-4">
         {categories.map(category => (
           <button
             key={category}
@@ -55,6 +93,10 @@ export default function BlogList({ posts }: { posts: BlogListItem[] }) {
           </button>
         ))}
       </div>
+
+      <p className="text-center text-xs mb-6" style={{ color: 'var(--text-secondary)' }}>
+        共 {visible.length} 篇
+      </p>
 
       <div className="space-y-6">
         {visible.map((post, i) => (
@@ -119,7 +161,7 @@ export default function BlogList({ posts }: { posts: BlogListItem[] }) {
 
       {visible.length === 0 && (
         <p className="text-center py-16" style={{ color: 'var(--text-secondary)' }}>
-          该分类下还没有文章。
+          {keyword ? '没有匹配的文章，换个关键词试试。' : '该分类下还没有文章。'}
         </p>
       )}
     </div>

@@ -28,13 +28,30 @@ const unbounded = Unbounded({
   weight: ["400", "600", "800"],
 })
 
+const siteTitle = `${siteConfig.name} | 个人网站`
+const siteDescription = `${siteConfig.description} ${siteConfig.descriptionEn}`
+
 export const metadata: Metadata = {
-  title: siteConfig.name + ' | 个人网站',
-  description: siteConfig.description + ' ' + siteConfig.descriptionEn,
+  metadataBase: new URL(siteConfig.url),
+  title: siteTitle,
+  description: siteDescription,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  // 站点根路径作为 canonical；og:image / twitter:image 由 app/opengraph-image.png 自动注入。
+  alternates: { canonical: '/' },
   openGraph: {
-    title: siteConfig.name + ' | 个人网站',
-    description: siteConfig.description + ' ' + siteConfig.descriptionEn,
     type: 'website',
+    url: '/',
+    siteName: siteTitle,
+    locale: 'zh_CN',
+    title: siteTitle,
+    description: siteDescription,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteTitle,
+    description: siteDescription,
   },
 }
 
