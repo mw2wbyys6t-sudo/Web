@@ -6,9 +6,9 @@ on:
     branches: [main]
   # 允许在 Actions 页面手动触发
   workflow_dispatch:
-  # 每天 21:00 UTC（北京时间次日 05:00）重新构建一次，顺带刷新星标 / 阅读数据
+  # 每小时重新构建一次，让 CSDN 阅读数据保持新鲜（GitHub 星标/关注者走访客端实时接口，不依赖这里）
   schedule:
-    - cron: "0 21 * * *"
+    - cron: "0 * * * *"
 
 # 部署到 GitHub Pages 所需的最小权限
 permissions:

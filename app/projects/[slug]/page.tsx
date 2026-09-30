@@ -6,6 +6,7 @@ import { ArrowLeft, ExternalLink, Star } from 'lucide-react'
 import { GithubIcon } from '@/components/icons/BrandIcons'
 import ContentLinks from '@/components/ContentLinks'
 import LiveStat from '@/components/LiveStat'
+import { parseRepo } from '@/lib/live-github'
 
 export function generateStaticParams() {
   return getAllProjects().map(project => ({ slug: project.slug }))
@@ -68,7 +69,7 @@ export default async function ProjectDetailPage({
                 title="GitHub Stars"
               >
                 <Star size={12} className="text-[var(--accent-pink)]" fill="currentColor" />
-                <LiveStat kind="stars" slug={project.slug} fallback={project.stars} /> stars
+                <LiveStat kind="stars" slug={project.slug} fallback={project.stars} repo={parseRepo(project.github)} /> stars
               </span>
             )}
           </div>

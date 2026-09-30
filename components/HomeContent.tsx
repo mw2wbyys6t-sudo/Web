@@ -7,6 +7,7 @@ import GlassCard from './GlassCard'
 import GithubCta from './GithubCta'
 import WaveDivider from './WaveDivider'
 import LiveStat from './LiveStat'
+import { parseRepo } from '@/lib/live-github'
 import { GithubIcon } from './icons/BrandIcons'
 import { siteConfig } from '@/lib/config'
 import { ArrowRight, Sparkles, MapPin, Sparkle, Star, Eye, ThumbsUp, Bookmark, Trophy, Rocket, MessagesSquare, Users } from 'lucide-react'
@@ -29,6 +30,7 @@ export interface HomeProject {
   tags: string[]
   image?: string
   stars?: number
+  github?: string
 }
 
 export interface HomePost {
@@ -300,7 +302,7 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
                           title="GitHub Stars"
                         >
                           <Star size={12} className="text-[var(--accent-pink)]" fill="currentColor" />
-                          <LiveStat kind="stars" slug={project.slug} fallback={project.stars} />
+                          <LiveStat kind="stars" slug={project.slug} fallback={project.stars} repo={parseRepo(project.github)} />
                         </span>
                       )}
                     </div>
@@ -364,7 +366,7 @@ export default function HomeContent({ projects, posts, avatar }: HomeContentProp
               <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
                 <span className="glass-tag inline-flex items-center gap-1.5" title="GitHub Followers">
                   <Users size={14} className="text-[var(--accent-violet)]" />
-                  {siteConfig.githubFollowers} 位关注者
+                  <LiveStat kind="followers" slug="followers" fallback={siteConfig.githubFollowers} /> 位关注者
                 </span>
               </div>
               <GithubCta />

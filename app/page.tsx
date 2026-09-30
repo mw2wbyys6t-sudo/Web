@@ -14,6 +14,7 @@ export default function HomePage() {
       tags: project.tags,
       image: project.image,
       stars: project.stars,
+      github: project.github,
     }))
 
   const posts = getAllPosts()

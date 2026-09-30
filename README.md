@@ -159,11 +159,20 @@ npm run sync-stats
 
 页面上通过 [`components/LiveStat.tsx`](components/LiveStat.tsx) 读取 `/api/stats`，成功则用最新值水合，失败则回落到 frontmatter 里的快照——**任何情况下都不会出现空白或报错**。
 
+### 访客端实时数据（无需重新部署）
+
+站点是纯静态托管的，构建期快照只有在重新部署时才会变。为了让 **GitHub 星标数** 和 **GitHub 关注者数** 做到实时，[`lib/live-github.ts`](lib/live-github.ts) 会在访客打开页面时直接调用 GitHub 公开 API 拿当前值：
+
+- **星标数**：作品卡片 / 详情页传入仓库地址（`owner/repo`），优先显示 GitHub 实时值，限流或断网时回落到构建期快照
+- **关注者数**：首页 GitHub 区块直接取账号当前关注者数，失败时回落到 `lib/config.ts` 里的 `githubFollowers`
+- 请求结果做了会话级缓存（10 分钟）+ 并发去重，既保证够新，也避免反复请求把未鉴权额度（每 IP 每小时 60 次）用光
+- **阅读 / 点赞 / 收藏**（CSDN）没有公开接口，只能靠定时构建刷新，因此改为每小时构建一次
+
 ## 部署到 GitHub Pages
 
 站点通过 GitHub Actions 自动构建并部署，流水线见 [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml)：
 
-- **触发时机**：推送到 `main`、手动触发、以及每天 21:00 UTC（北京时间次日 05:00）定时重新构建，顺带刷新星标与阅读数据
+- **触发时机**：推送到 `main`、手动触发、以及每小时定时重新构建，让 CSDN 阅读数据保持新鲜（GitHub 星标/关注者不依赖定时构建，见上）
 - **构建流程**：`npm ci` → `npm run sync-stats`（失败不阻断）→ `npm run build:pages` → 上传 `out/` → 部署到 Pages
 
 ### 本地复现静态导出
